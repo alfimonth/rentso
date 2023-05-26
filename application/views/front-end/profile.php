@@ -162,12 +162,12 @@ if (strlen($_SESSION['ulogin']) == 0) {
                 </div>
                 <div class="form-group">
                   <label class="control-label">KTP</label><br />
-                  <img src="image/id/<?php echo htmlentities($result['ktp']); ?>" width="300" height="200" style="border:solid 1px #000"><br />
+                  <img src="<?= base_url('assets/'); ?>images/user/id/<?php echo htmlentities($result['ktp']); ?>" width="300" height="200" style="border:solid 1px #000"><br />
                   <a href="gantiktp.php?">Ganti Gambar KTP</a>
                 </div>
                 <div class="form-group">
                   <label class="control-label">KK</label><br />
-                  <img src="image/id/<?php echo htmlentities($result['kk']); ?>" width="300" height="200" style="border:solid 1px #000"><br />
+                  <img src="<?= base_url('assets/'); ?>images/user/id/<?php echo htmlentities($result['kk']); ?>" width="300" height="200" style="border:solid 1px #000"><br />
                   <a href="gantikk.php?">Ganti Gambar KK</a>
                 </div>
               <?php } ?>

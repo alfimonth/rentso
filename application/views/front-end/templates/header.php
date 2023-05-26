@@ -61,7 +61,7 @@
                   <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
                   <?php if ($_SESSION['ulogin']) { ?>
-                    <li><a href="profile.php">Profile Settings</a></li>
+                    <li><a href="<?= base_url('/user/profil'); ?>">Profile Settings</a></li>
                     <li><a href="update-password.php">Update Password</a></li>
                     <li><a href="riwayatsewa.php">Riwayat Sewa</a></li>
                     <li><a href="<?= base_url('/home/logout'); ?>">Sign Out</a></li>
@@ -84,7 +84,7 @@
           <li><a href="<?= base_url('kendaraan'); ?>">Kendaraan</a>
           <li><a href="<?= base_url('page/faq'); ?>">FAQs</a></li>
           <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
-          <li><a href="<?= base_url('page/about'); ?>">About Us</a></li>
+          <li><a href="<?= base_url('page/about'); ?>">About</a></li>
 
         </ul>
       </div>

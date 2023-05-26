@@ -63,7 +63,7 @@
                   <?php if ($_SESSION['ulogin']) { ?>
                     <li><a href="<?= base_url('/user/profile'); ?>">Profile Settings</a></li>
                     <li><a href="<?= base_url('/user/password'); ?>">Update Password</a></li>
-                    <li><a href="riwayatsewa.php">Riwayat Sewa</a></li>
+                    <li><a href="<?= base_url('/user/history'); ?>">Riwayat Sewa</a></li>
                     <li><a href="<?= base_url('/home/logout'); ?>">Sign Out</a></li>
                   <?php } else { ?>
                     <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">Profile Settings</a></li>

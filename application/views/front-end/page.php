@@ -13,7 +13,7 @@ include('templates/config.php');
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title>Rental Mobil | Tentang Kami</title>
+  <title>Halaman | Rentso.</title>
   <!--Bootstrap -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>/css/bootstrap.min.css" type="text/css">
   <!--Custome Style -->

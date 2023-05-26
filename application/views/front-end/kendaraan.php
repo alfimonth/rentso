@@ -14,7 +14,7 @@ error_reporting(0);
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title>Rental Mobil</title>
+  <title>Daftar Kendaraan | Rentso.</title>
   <!--Bootstrap -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.min.css" type="text/css">
   <!--Custome Style -->
@@ -88,7 +88,7 @@ error_reporting(0);
               $query = mysqli_query($koneksidb, $sql);
               $cnt = mysqli_num_rows($query);
               ?>
-              <p><span><?php echo htmlentities($cnt); ?> Mobil</span></p>
+              <p><span><?= htmlentities($cnt); ?> Mobil</span></p>
             </div>
           </div>
 
@@ -99,17 +99,17 @@ error_reporting(0);
             while ($result = mysqli_fetch_array($query1)) {
           ?>
               <div class="product-listing-m gray-bg">
-                <div class="product-listing-img"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?php echo htmlentities($result['image1']); ?>" class="img-responsive" alt="Image" /> </a>
+                <div class="product-listing-img"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($result['image1']); ?>" class="img-responsive" alt="Image" /> </a>
                 </div>
                 <div class="product-listing-content">
-                  <h5><a href="vehical-details.php?vhid=<?php echo htmlentities($result['id_mobil']); ?>"><?php echo htmlentities($result['nama_merek']); ?> , <?php echo htmlentities($result['nama_mobil']); ?></a></h5>
-                  <p class="list-price"><?php echo htmlentities(format_rupiah($result['harga'])); ?> / Hari</p>
+                  <h5><a href="<?= base_url('kendaraan/detail'); ?>/<?= htmlentities($result['id_mobil']); ?>"><?= htmlentities($result['nama_merek']); ?> , <?= htmlentities($result['nama_mobil']); ?></a></h5>
+                  <p class="list-price"><?= htmlentities(format_rupiah($result['harga'])); ?> / Hari</p>
                   <ul>
-                    <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result['seating']); ?> Seats</li>
-                    <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result['tahun']); ?> </li>
-                    <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result['bb']); ?></li>
+                    <li><i class="fa fa-user" aria-hidden="true"></i><?= htmlentities($result['seating']); ?> Seats</li>
+                    <li><i class="fa fa-calendar" aria-hidden="true"></i><?= htmlentities($result['tahun']); ?> </li>
+                    <li><i class="fa fa-car" aria-hidden="true"></i><?= htmlentities($result['bb']); ?></li>
                   </ul>
-                  <a href="vehical-details.php?vhid=<?php echo htmlentities($result['id_mobil']); ?>" class="btn">Lihat Detail <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                  <a href="<?= base_url('kendaraan/detail'); ?>/<?= htmlentities($result['id_mobil']); ?>" class="btn">Lihat Detail <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
                 </div>
               </div>
           <?php }
@@ -132,7 +132,7 @@ error_reporting(0);
                     $query3 = mysqli_query($koneksidb, $sql3);
                     if (mysqli_num_rows($query3) > 0) {
                       while ($result = mysqli_fetch_array($query3)) { ?>
-                        <option value="<?php echo htmlentities($result['id_merek']); ?>"><?php echo htmlentities($result['nama_merek']); ?></option>
+                        <option value="<?= htmlentities($result['id_merek']); ?>"><?= htmlentities($result['nama_merek']); ?></option>
                     <?php }
                     } ?>
                   </select>
@@ -164,9 +164,9 @@ error_reporting(0);
                 if (mysqli_num_rows($query2) > 0) {
                   while ($result = mysqli_fetch_array($query2)) { ?>
                     <li class="gray-bg">
-                      <div class="recent_post_img"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result['id_mobil']); ?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result['image1']); ?>" alt="image"></a> </div>
-                      <div class="recent_post_title"> <a href="vehical-details.php?vhid=<?php echo htmlentities($result['id_mobil']); ?>"><?php echo htmlentities($result['nama_merek']); ?> , <?php echo htmlentities($result['nama_mobil']); ?></a>
-                        <p class="widget_price"><?php echo htmlentities(format_rupiah($result['harga'])); ?> / Hari</p>
+                      <div class="recent_post_img"> <a href="vehical-details.php?vhid=<?= htmlentities($result['id_mobil']); ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($result['image1']); ?>" alt="image"></a> </div>
+                      <div class="recent_post_title"> <a href="vehical-details.php?vhid=<?= htmlentities($result['id_mobil']); ?>"><?= htmlentities($result['nama_merek']); ?> , <?= htmlentities($result['nama_mobil']); ?></a>
+                        <p class="widget_price"><?= htmlentities(format_rupiah($result['harga'])); ?> / Hari</p>
                       </div>
                     </li>
                 <?php }

@@ -96,7 +96,7 @@ error_reporting(0);
 
                 <div class="col-list-3">
                   <div class="recent-car-list">
-                    <div class="car-info-box"> <a href="vehical-details.php?vhid=<?php echo htmlentities($results['id_mobil']); ?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($results['image1']); ?>" class="img-responsive" alt="image"></a>
+                    <div class="car-info-box"> <a href="vehical-details.php?vhid=<?php echo htmlentities($results['id_mobil']); ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?php echo htmlentities($results['image1']); ?>" class="img-responsive" alt="image"></a>
                       <ul>
                         <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($results['bb']); ?></li>
                         <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($results['tahun']); ?> Model</li>
@@ -104,7 +104,7 @@ error_reporting(0);
                       </ul>
                     </div>
                     <div class="car-title-m">
-                      <h6><a href="vehical-details.php?vhid=<?php echo htmlentities($results['id_mobil']); ?>"><?php echo htmlentities($results['nama_merek']); ?> , <?php echo htmlentities($results['nama_mobil']); ?></a></h6>
+                      <h6><a href="<?= base_url(); ?>kendaraan/detail/<?php echo htmlentities($results['id_mobil']); ?>"><?php echo htmlentities($results['nama_merek']); ?> , <?php echo htmlentities($results['nama_mobil']); ?></a></h6>
                       <span class="price"><?php echo htmlentities(format_rupiah($results['harga'])); ?> /Hari</span>
                     </div>
                     <div class="inventory_info_m">

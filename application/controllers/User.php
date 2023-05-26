@@ -14,4 +14,8 @@ class User extends CI_Controller
     {
         $this->load->view('front-end/password');
     }
+    public function history()
+    {
+        $this->load->view('front-end/history');
+    }
 }

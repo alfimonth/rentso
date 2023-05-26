@@ -62,7 +62,7 @@
                 <ul class="dropdown-menu">
                   <?php if ($_SESSION['ulogin']) { ?>
                     <li><a href="<?= base_url('/user/profil'); ?>">Profile Settings</a></li>
-                    <li><a href="update-password.php">Update Password</a></li>
+                    <li><a href="<?= base_url('/user/password'); ?>">Update Password</a></li>
                     <li><a href="riwayatsewa.php">Riwayat Sewa</a></li>
                     <li><a href="<?= base_url('/home/logout'); ?>">Sign Out</a></li>
                   <?php } else { ?>

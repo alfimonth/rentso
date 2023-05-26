@@ -10,4 +10,8 @@ class User extends CI_Controller
 
         $this->load->view('front-end/profile');
     }
+    public function password()
+    {
+        $this->load->view('front-end/password');
+    }
 }

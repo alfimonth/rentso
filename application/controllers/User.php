@@ -5,7 +5,7 @@ class User extends CI_Controller
     {
         parent::__construct();
     }
-    public function profil()
+    public function profile()
     {
 
         $this->load->view('front-end/profile');

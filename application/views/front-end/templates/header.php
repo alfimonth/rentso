@@ -61,7 +61,7 @@
                   <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
                   <?php if ($_SESSION['ulogin']) { ?>
-                    <li><a href="<?= base_url('/user/profil'); ?>">Profile Settings</a></li>
+                    <li><a href="<?= base_url('/user/profile'); ?>">Profile Settings</a></li>
                     <li><a href="<?= base_url('/user/password'); ?>">Update Password</a></li>
                     <li><a href="riwayatsewa.php">Riwayat Sewa</a></li>
                     <li><a href="<?= base_url('/home/logout'); ?>">Sign Out</a></li>

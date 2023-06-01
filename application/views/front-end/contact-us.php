@@ -110,28 +110,28 @@ if (isset($_POST['send'])) {
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h3>Ada Pertanyaan?Silahkan Isi Form Berikut </h3>
+          <h3>Feedback </h3>
           <?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
           <div class="contact_form gray-bg">
             <form method="post">
               <div class="form-group">
-                <label class="control-label">Full Name <span>*</span></label>
+                <label class="control-label">Nama <span>*</span></label>
                 <input type="text" name="fullname" class="form-control white_bg" id="fullname" required>
               </div>
               <div class="form-group">
-                <label class="control-label">Email Address <span>*</span></label>
+                <label class="control-label">Alamat Email <span>*</span></label>
                 <input type="email" name="email" class="form-control white_bg" id="emailaddress" required>
               </div>
               <div class="form-group">
-                <label class="control-label">Phone Number <span>*</span></label>
+                <label class="control-label">Nomor Telepon <span>*</span></label>
                 <input type="text" name="contactno" class="form-control white_bg" id="phonenumber" required>
               </div>
               <div class="form-group">
-                <label class="control-label">Message <span>*</span></label>
+                <label class="control-label">Pesan <span>*</span></label>
                 <textarea class="form-control white_bg" name="message" rows="4" required></textarea>
               </div>
               <div class="form-group">
-                <button class="btn" type="submit" name="send" type="submit">Send Message <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+                <button class="btn" type="submit" name="send" type="submit">Kirim <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
               </div>
             </form>
           </div>
@@ -155,11 +155,11 @@ if (isset($_POST['send'])) {
                     </div>
                   </li>
                   <li>
-                    <div class="icon_wrap"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                    <div class="icon_wrap"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
                     <div class="contact_info_m"><a href=""><?php echo htmlentities($result['email_kami']); ?></a></div>
                   </li>
                   <li>
-                    <div class="icon_wrap"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+                    <div class="icon_wrap"><i class="fa fa-phone" aria-hidden="true"></i></div>
                     <div class="contact_info_m"><a href=""><?php echo htmlentities($result['telp_kami']); ?></a></div>
                   </li>
                 </ul>

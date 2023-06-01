@@ -164,8 +164,8 @@ error_reporting(0);
                 if (mysqli_num_rows($query2) > 0) {
                   while ($result = mysqli_fetch_array($query2)) { ?>
                     <li class="gray-bg">
-                      <div class="recent_post_img"> <a href="vehical-details.php?vhid=<?= htmlentities($result['id_mobil']); ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($result['image1']); ?>" alt="image"></a> </div>
-                      <div class="recent_post_title"> <a href="vehical-details.php?vhid=<?= htmlentities($result['id_mobil']); ?>"><?= htmlentities($result['nama_merek']); ?> , <?= htmlentities($result['nama_mobil']); ?></a>
+                      <div class="recent_post_img"> <a href="<?= base_url(); ?>kendaraan/detail/<?php echo htmlentities($result['id_mobil']); ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($result['image1']); ?>" alt="image"></a> </div>
+                      <div class="recent_post_title"> <a href="<?= base_url(); ?>kendaraan/detail/<?php echo htmlentities($result['id_mobil']); ?>"><?= htmlentities($result['nama_merek']); ?> , <?= htmlentities($result['nama_mobil']); ?></a>
                         <p class="widget_price"><?= htmlentities(format_rupiah($result['harga'])); ?> / Hari</p>
                       </div>
                     </li>

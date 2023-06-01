@@ -12,12 +12,12 @@
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-envelope" aria-hidden="true"></i> </div>
               <p class="uppercase_text">For Support Mail us : </p>
-              <a href="mailto:info@example.com">rental_mobil@gmail.com</a>
+              <a href="mailto:rentso@gmail.com">rentso@gmail.com</a>
             </div>
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-phone" aria-hidden="true"></i> </div>
               <p class="uppercase_text">For Services Call Us: </p>
-              <a href="tel:61-1234-5678-99">+62-812-3344-5551</a>
+              <a href="tel:62-812-1482-1516">+62-812-1482-1516</a>
             </div>
             <!-- <div class="social-follow">
               <ul>

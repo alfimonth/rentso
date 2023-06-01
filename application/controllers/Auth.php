@@ -10,4 +10,9 @@ class Auth extends CI_Controller
 
         $this->load->view('front-end/regist');
     }
+    public function add_user()
+    {
+
+        $this->load->view('front-end/registact');
+    }
 }

@@ -44,36 +44,22 @@
       <div class="header_wrap">
         <div class="user_login">
 
-          <?php if (strlen($_SESSION['ulogin']) == 0) : ?>
-            <li class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a> </li>
-          <?php else : ?>
+          <?php if (!empty($this->session->userdata('email'))) : ?>
             <ul>
               <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>
-                  <?php
-                  $email = $_SESSION['ulogin'];
-                  $sql = "SELECT nama_user FROM users WHERE email='$email'";
-                  $query = mysqli_query($koneksidb, $sql);
-                  if (mysqli_num_rows($query) > 0) {
-                    while ($results = mysqli_fetch_array($query)) {
-                      echo htmlentities($results['nama_user']);
-                    }
-                  } ?>
+                  <?= $user; ?>
                   <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
-                  <?php if ($_SESSION['ulogin']) { ?>
-                    <li><a href="<?= base_url('/user/profile'); ?>">Profile Settings</a></li>
-                    <li><a href="<?= base_url('/user/password'); ?>">Update Password</a></li>
-                    <li><a href="<?= base_url('/user/history'); ?>">Riwayat Sewa</a></li>
-                    <li><a href="<?= base_url('/home/logout'); ?>">Sign Out</a></li>
-                  <?php } else { ?>
-                    <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">Profile Settings</a></li>
-                    <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">Update Password</a></li>
-                    <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">Riwayat Sewa</a></li>
-                    <li><a href="#loginform" data-toggle="modal" data-dismiss="modal">Sign Out</a></li>
-                  <?php } ?>
+                  <li><a href="<?= base_url('/user/profile'); ?>">Profile Settings</a></li>
+                  <li><a href="<?= base_url('/user/password'); ?>">Update Password</a></li>
+                  <li><a href="<?= base_url('/user/history'); ?>">Riwayat Sewa</a></li>
+                  <li><a href="<?= base_url('/home/logout'); ?>">Sign Out</a></li>
                 </ul>
               </li>
             </ul>
+          <?php else : ?>
+            <li class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a> </li>
+
           <?php endif ?>
 
         </div>

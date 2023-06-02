@@ -1,5 +1,4 @@
 <?php
-session_start();
 error_reporting(0);
 include('templates/config.php');
 ?>
@@ -14,7 +13,7 @@ include('templates/config.php');
   <meta name="description" content="">
   <title>Mutiara Motor Car Rental Portal | Registrasi</title>
   <!--Bootstrap -->
-  <link rel="stylesheet" href="<?= base_url('assets/'); ?>/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="<?= base_url('assets/'); ?>/css/bootstrap.mini.css" type="text/css">
   <!--Custome Style -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>/css/style.css" type="text/css">
   <!--OWL Carousel slider-->

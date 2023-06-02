@@ -15,4 +15,13 @@ class Kendaraan extends CI_Controller
         $data['id'] = $id;
         $this->load->view('front-end/detail', $data);
     }
+    public function booking($id)
+    {
+        $data['id'] = $id;
+        $this->load->view('front-end/booking', $data);
+    }
+    public function check()
+    {
+        cek_login();
+    }
 }

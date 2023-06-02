@@ -17,7 +17,7 @@ if (strlen($_SESSION['ulogin']) == 0) {
     <meta name="description" content="">
     <title>Rental Mobil | Update Password</title>
     <!--Bootstrap -->
-    <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.mini.css" type="text/css">
     <!--Custome Style -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css" type="text/css">
     <!--OWL Carousel slider-->

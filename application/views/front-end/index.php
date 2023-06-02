@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include('templates/config.php');
 include('templates/format_rupiah.php');
 error_reporting(0);
@@ -18,7 +18,7 @@ error_reporting(0);
   <title>Home - Rentso.</title>
   <!--Bootstrap -->
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.mini.css" type="text/css">
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css" type="text/css">
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/owl.carousel.css" type="text/css">
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/owl.transitions.css" type="text/css">

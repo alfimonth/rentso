@@ -1,5 +1,4 @@
 <?php
-session_start();
 include('templates/config.php');
 include('templates/format_rupiah.php');
 error_reporting(0);
@@ -17,7 +16,7 @@ error_reporting(0);
   <meta name="description" content="">
   <title>Detail Kendaraan | Rentso.</title>
   <!--Bootstrap -->
-  <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.mini.css" type="text/css">
   <!--Custome Style -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css" type="text/css">
   <!--OWL Carousel slider-->
@@ -288,24 +287,24 @@ error_reporting(0);
                 <div class="widget_heading">
                   <h5><i class="fa fa-envelope" aria-hidden="true"></i>Sewa Sekarang</h5>
                 </div>
-                <form method="get" action="booking.php">
-                  <input type="hidden" class="form-control" name="vid" value=<?php echo $vhid; ?> required>
-                  <!--
+                <!-- <form method="get" action="booking.php"> -->
+                <!-- <input type="hidden" class="form-control" name="vid" value=<?= $vhid; ?> required> -->
+                <!--
             <div class="form-group">
               <input type="date" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)" required>
             </div>
             <div class="form-group">
               <input type="date" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)" required>
             </div>-->
-                  <?php if ($_SESSION['ulogin']) { ?>
-                    <div class="form-group" align="center">
-                      <button class="btn" align="center">Sewa Sekarang</button>
-                    </div>
-                  <?php } else { ?>
-                    <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login Untuk Menyewa</a>
+                <?php if ($_SESSION['ulogin']) { ?>
+                  <div class="form-group" align="center">
+                    <a href="<?= base_url('kendaraan/booking/') . $vhid ?>" class="btn" align="center">Sewa Sekarang</a>
+                  </div>
+                <?php } else { ?>
+                  <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login Untuk Menyewa</a>
 
-                  <?php } ?>
-                </form>
+                <?php } ?>
+                <!-- </form> -->
               </div>
             </aside>
             <!--/Side-Bar-->

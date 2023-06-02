@@ -7,7 +7,6 @@ class User extends CI_Controller
     }
     public function profile()
     {
-
         $this->load->view('front-end/profile');
     }
     public function password()

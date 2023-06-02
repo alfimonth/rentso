@@ -1,5 +1,4 @@
 <?php
-session_start();
 error_reporting(0);
 include('templates/config.php');
 $fname = $_POST['fullname'];
@@ -24,7 +23,7 @@ if ($conf != $pass) {
 		echo "<script>alert('Email sudah terdaftar, silahkan gunakan email lain!');</script>";
 		echo "<script type='text/javascript'> document.location = 'regist.php'; </script>";
 	} else {
-		$password = md5($_POST['pass']);
+		$password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 		$sql1 = "INSERT INTO users(nama_user,email,telp,password,alamat,ktp,kk) VALUES('$fname','$email','$mobile','$password','$alamat','$newimg1','$newimg2')";
 		$lastInsertId = mysqli_query($koneksidb, $sql1);
 		if ($lastInsertId) {

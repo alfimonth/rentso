@@ -1,19 +1,19 @@
 <?php
-if (isset($_POST['login'])) {
-  $email = $_POST['email'];
-  $password = md5($_POST['password']);
-  $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-  $query = mysqli_query($koneksidb, $sql);
-  $results = mysqli_fetch_array($query);
-  if (mysqli_num_rows($query) > 0) {
-    $_SESSION['ulogin'] = $_POST['email'];
-    $_SESSION['fname'] = $results['nama_user'];
-    $currentpage = $_SERVER['REQUEST_URI'];
-    echo "<script type='text/javascript'> document.location = '$currentpage'; </script>";
-  } else {
-    echo "<script>alert('Email atau Password Salah!');</script>";
-  }
-}
+// if (isset($_POST['login'])) {
+//   $email = $_POST['email'];
+//   $password = md5($_POST['password']);
+//   $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+//   $query = mysqli_query($koneksidb, $sql);
+//   $results = mysqli_fetch_array($query);
+//   if (mysqli_num_rows($query) > 0) {
+//     $_SESSION['ulogin'] = $_POST['email'];
+//     $_SESSION['fname'] = $results['nama_user'];
+//     $currentpage = $_SERVER['REQUEST_URI'];
+//     echo "<script type='text/javascript'> document.location = '$currentpage'; </script>";
+//   } else {
+//     echo "<script>alert('Email atau Password Salah!');</script>";
+//   }
+// }
 
 ?>
 
@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
         <div class="row">
           <div class="login_wrap">
             <div class="col-md-12 col-sm-6">
-              <form method="post">
+            <form action="<?= base_url('auth'); ?>" method="post">
                 <div class="form-group">
                   <input type="email" class="form-control" name="email" placeholder="Alamat Email">
                 </div>

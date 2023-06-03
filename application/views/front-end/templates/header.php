@@ -54,7 +54,8 @@
                   <li><a href="<?= base_url('/user/profile'); ?>">Profil</a></li>
                   <li><a href="<?= base_url('/user/password'); ?>">Ubah Password</a></li>
                   <li><a href="<?= base_url('/user/history'); ?>">Riwayat Sewa</a></li>
-                  <li><a href="<?= base_url('/home/logout'); ?>">Logout</a></li>
+                  <li><a id="logout">Logout</a></li>
+                  <!-- <li><a href="<?= base_url('/home/logout'); ?>">Logout</a></li> -->
                 </ul>
               </li>
             </ul>

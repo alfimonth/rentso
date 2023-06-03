@@ -4,6 +4,7 @@ class Page extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        save_url();
     }
     public function about()
     {

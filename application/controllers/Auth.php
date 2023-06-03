@@ -23,14 +23,17 @@ class Auth extends CI_Controller
                 ];
                 $this->session->set_userdata($data);
                 $this->session->set_flashdata('login', "<script>Swal.fire({icon: 'success',title: 'Login Berhasil', showConfirmButton: false,timer: 1500})</script>");
-                redirect('');
+                $prev_url = $this->session->userdata('prev_url');
+                redirect($prev_url);
             } else {
                 $this->session->set_flashdata('login', "<script>Swal.fire({icon: 'error',title: 'Username/Password Salah', showConfirmButton: false,timer: 1500})</script>");
-                redirect('');
+                $prev_url = $this->session->userdata('prev_url');
+                redirect($prev_url);
             }
         } else {
             $this->session->set_flashdata('login', "<script>Swal.fire({icon: 'error',title: 'Username/Password Salah', showConfirmButton: false,timer: 1500})</script>");
-            redirect('');
+            $prev_url = $this->session->userdata('prev_url');
+            redirect($prev_url);
         }
     }
     public function register()
@@ -48,6 +51,7 @@ class Auth extends CI_Controller
         $item = array('email', 'id_user', 'nama');
         $this->session->unset_userdata($item);
         $this->session->set_flashdata('login', "<script>Swal.fire({icon: 'success',title: 'Logout Berhasil', showConfirmButton: false,timer: 1500})</script>");
-        redirect('');
+        $prev_url = $this->session->userdata('prev_url');
+        redirect($prev_url);
     }
 }

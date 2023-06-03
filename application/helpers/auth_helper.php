@@ -1,29 +1,19 @@
 <?php
-// function cek_login()
-// {
-//     $ci = get_instance();
-//     if (!$ci->session->userdata('email')) {
-//         $ci->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Akses ditolak. Anda belum login!! </div>');
-//         redirect('autentifikasi');
-//     } else {
-//         $role_id = $ci->session->userdata('role_id');
-//     }
-// }
 
 function cek_login()
 
 {
     $ci = get_instance();
-    if (!$ci->session->userdata('ulogin')) {
+    if (!$ci->session->userdata('email')) {
+        $ci->session->set_flashdata('pesan',  "<script>Swal.fire({icon: 'error',title: 'Anda Belum Login',})</script>");
         redirect('');
     }
 }
-function cek_user()
+
+function save_url()
 {
     $ci = get_instance();
-    $role_id = $ci->session->userdata('role_id');
-    if ($role_id != 1) {
-        $ci->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Akses tidak diizinkan </div>');
-        redirect('home');
-    }
+    $ci->session->set_userdata('prev_url', current_url());
 }
+
+

@@ -1,7 +1,6 @@
 <?php
 include('templates/config.php');
 include('templates/format_rupiah.php');
-error_reporting(0);
 ?>
 
 <!DOCTYPE HTML>
@@ -52,38 +51,26 @@ error_reporting(0);
         <div class="col-md-9 col-md-push-3">
           <div class="result-sorting-wrapper">
             <div class="sorting-count">
-              <?php
-              //Query for Listing count
-              $sql = "SELECT id_mobil from mobil";
-              $query = mysqli_query($koneksidb, $sql);
-              $cnt = mysqli_num_rows($query);
-              ?>
-              <p><span><?= htmlentities($cnt); ?> Mobil</span></p>
+              <p><span><?= htmlentities($count); ?> Kendaraan</span></p>
             </div>
           </div>
 
-          <?php
-          $sql1 = "SELECT mobil.*,merek.* FROM mobil,merek WHERE merek.id_merek=mobil.id_merek";
-          $query1 = mysqli_query($koneksidb, $sql1);
-          if (mysqli_num_rows($query1) > 0) {
-            while ($result = mysqli_fetch_array($query1)) {
-          ?>
-              <div class="product-listing-m gray-bg">
-                <div class="product-listing-img"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($result['image1']); ?>" class="img-responsive" alt="Image" /> </a>
-                </div>
-                <div class="product-listing-content">
-                  <h5><a href="<?= base_url('kendaraan/detail'); ?>/<?= htmlentities($result['id_mobil']); ?>"><?= htmlentities($result['nama_merek']); ?> , <?= htmlentities($result['nama_mobil']); ?></a></h5>
-                  <p class="list-price"><?= htmlentities(format_rupiah($result['harga'])); ?> / Hari</p>
-                  <ul>
-                    <li><i class="fa fa-user" aria-hidden="true"></i><?= htmlentities($result['seating']); ?> Seats</li>
-                    <li><i class="fa fa-calendar" aria-hidden="true"></i><?= htmlentities($result['tahun']); ?> </li>
-                    <li><i class="fa fa-car" aria-hidden="true"></i><?= htmlentities($result['bb']); ?></li>
-                  </ul>
-                  <a href="<?= base_url('kendaraan/detail'); ?>/<?= htmlentities($result['id_mobil']); ?>" class="btn">Lihat Detail <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
-                </div>
+          <?php foreach ($vehicles as $vehicle) : ?>
+            <div class="product-listing-m gray-bg">
+              <div class="product-listing-img"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($vehicle['image1']); ?>" class="img-responsive" alt="Image" /> </a>
               </div>
-          <?php }
-          } ?>
+              <div class="product-listing-content">
+                <h5><a href="<?= base_url('kendaraan/detail'); ?>/<?= htmlentities($vehicle['id_mobil']); ?>"><?= htmlentities($vehicle['nama_merek']); ?> <?= htmlentities($vehicle['nama_mobil']); ?></a></h5>
+                <p class="list-price"><?= htmlentities(format_rupiah($vehicle['harga'])); ?> / Hari</p>
+                <ul>
+                  <li><i class="fa fa-user" aria-hidden="true"></i><?= htmlentities($vehicle['seating']); ?> Seats</li>
+                  <li><i class="fa fa-calendar" aria-hidden="true"></i><?= htmlentities($vehicle['tahun']); ?> </li>
+                  <li><i class="fa fa-car" aria-hidden="true"></i><?= htmlentities($vehicle['bb']); ?></li>
+                </ul>
+                <a href="<?= base_url('kendaraan/detail'); ?>/<?= htmlentities($vehicle['id_mobil']); ?>" class="btn">Lihat Detail <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+              </div>
+            </div>
+          <?php endforeach; ?>
         </div>
 
         <!--Side-Bar-->
@@ -123,24 +110,18 @@ error_reporting(0);
 
           <div class="sidebar_widget">
             <div class="widget_heading">
-              <h5><i class="fa fa-car" aria-hidden="true"></i>Mobil Terbaru</h5>
+              <h5><i class="fa fa-car" aria-hidden="true"></i>Kendaraan Terbaru</h5>
             </div>
             <div class="recent_addedcars">
               <ul>
-                <?php
-                $sql2 = "SELECT mobil.*,merek.* FROM mobil,merek 
-						WHERE merek.id_merek=mobil.id_merek order by merek.id_merek desc limit 4";
-                $query2 = mysqli_query($koneksidb, $sql2);
-                if (mysqli_num_rows($query2) > 0) {
-                  while ($result = mysqli_fetch_array($query2)) { ?>
-                    <li class="gray-bg">
-                      <div class="recent_post_img"> <a href="<?= base_url(); ?>kendaraan/detail/<?php echo htmlentities($result['id_mobil']); ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($result['image1']); ?>" alt="image"></a> </div>
-                      <div class="recent_post_title"> <a href="<?= base_url(); ?>kendaraan/detail/<?php echo htmlentities($result['id_mobil']); ?>"><?= htmlentities($result['nama_merek']); ?> , <?= htmlentities($result['nama_mobil']); ?></a>
-                        <p class="widget_price"><?= htmlentities(format_rupiah($result['harga'])); ?> / Hari</p>
-                      </div>
-                    </li>
-                <?php }
-                } ?>
+                <?php foreach ($new as $vehicle) : ?>
+                  <li class="gray-bg">
+                    <div class="recent_post_img"> <a href="<?= base_url(); ?>kendaraan/detail/<?= htmlentities($vehicle['id_mobil']); ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($vehicle['image1']); ?>" alt="image"></a> </div>
+                    <div class="recent_post_title"> <a href="<?= base_url(); ?>kendaraan/detail/<?= htmlentities($vehicle['id_mobil']); ?>"><?= htmlentities($vehicle['nama_merek']); ?> <?= htmlentities($vehicle['nama_mobil']); ?></a>
+                      <p class="widget_price"><?= htmlentities(format_rupiah($vehicle['harga'])); ?> / Hari</p>
+                    </div>
+                  </li>
+                <?php endforeach; ?>
               </ul>
             </div>
           </div>
@@ -162,11 +143,6 @@ error_reporting(0);
   <!--Login-Form -->
   <?php include('templates/login.php'); ?>
   <!--/Login-Form -->
-
-  <!--Register-Form -->
-  <?php include('templates/registration.php'); ?>
-
-  <!--/Register-Form -->
 
   <!--Forgot-password-Form -->
   <?php include('templates/forgotpassword.php'); ?>

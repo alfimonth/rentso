@@ -4,6 +4,7 @@ class Home extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        save_url();
     }
     public function index()
     {
@@ -14,6 +15,7 @@ class Home extends CI_Controller
             $data['user'] = 'Guest';
         }
 
+        $data['vehicles'] = $this->ModelKendaraan->getLimit(9)->result_array();
         $this->load->view('front-end/index', $data);
     }
 }

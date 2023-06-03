@@ -1,9 +1,6 @@
 <?php
-// session_start();
 include('templates/config.php');
 include('templates/format_rupiah.php');
-error_reporting(0);
-
 ?>
 
 <!DOCTYPE HTML>
@@ -66,33 +63,25 @@ error_reporting(0);
         <!-- Recently Listed New Cars -->
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="resentnewcar">
-
-            <?php
-            $sql = "SELECT mobil.*, merek.* FROM mobil, merek WHERE merek.id_merek = mobil.id_merek";
-            $query = mysqli_query($koneksidb, $sql);
-            if (mysqli_num_rows($query) > 0) {
-              while ($results = mysqli_fetch_array($query)) {
-
-            ?>
-
-                <div class="col-list-3">
-                  <div class="recent-car-list">
-                    <div class="car-info-box"> <a href="<?= base_url(); ?>kendaraan/detail/<?php echo htmlentities($results['id_mobil']); ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?php echo htmlentities($results['image1']); ?>" class="img-responsive" alt="image"></a>
-                      <ul>
-                        <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($results['bb']); ?></li>
-                        <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($results['tahun']); ?> Model</li>
-                        <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($results['seating']); ?> Seats</li>
-                      </ul>
-                    </div>
-                    <div class="car-title-m">
-                      <h5><a href="vehical-details.php?vhid=<?php echo htmlentities($result['id']); ?>"><?php echo htmlentities($results['nama_merek']); ?> <?php echo htmlentities($results['nama_mobil']); ?></a></h5>
-                      <p class="list-price"><?php echo htmlentities(format_rupiah($results['harga'])); ?> /hari</p>
-                    </div>
+            <?php foreach ($vehicles as $vehicle) : ?>
+              <div class="col-list-3">
+                <div class="recent-car-list">
+                  <div class="car-info-box"> <a href="<?= base_url(); ?>kendaraan/detail/<?= $vehicle['id_mobil']; ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= $vehicle['image1']; ?>" class="img-responsive" alt="image"></a>
+                    <ul>
+                      <li><i class="fa fa-car" aria-hidden="true"></i><?= $vehicle['bb']; ?></li>
+                      <li><i class="fa fa-calendar" aria-hidden="true"></i><?= $vehicle['tahun']; ?> Model</li>
+                      <li><i class="fa fa-user" aria-hidden="true"></i><?= $vehicle['seating']; ?> Seats</li>
+                    </ul>
+                  </div>
+                  <div class="car-title-m">
+                    <h5>
+                      <a href="<?= base_url(); ?>kendaraan/detail/<?= $vehicle['id_mobil']; ?>"><?= $vehicle['nama_merek']; ?> <?= $vehicle['nama_mobil']; ?></a>
+                    </h5>
+                    <p class="list-price"><?= format_rupiah($vehicle['harga']); ?> /hari</p>
                   </div>
                 </div>
-            <?php }
-            } ?>
-
+              </div>
+            <?php endforeach; ?>
           </div>
         </div>
       </div>
@@ -112,10 +101,6 @@ error_reporting(0);
   <?php include('templates/login.php'); ?>
   <!--/Login-Form -->
 
-  <!--Register-Form -->
-  <?php include('templates/registration.php'); ?>
-
-  <!--/Register-Form -->
 
   <!--Forgot-password-Form -->
   <?php include('templates/forgotpassword.php'); ?>
@@ -124,7 +109,6 @@ error_reporting(0);
 
 
   <?= $this->session->flashdata('up-pass'); ?>
-  <?= $this->session->flashdata('login'); ?>
 
 
 

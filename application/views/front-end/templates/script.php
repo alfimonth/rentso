@@ -19,3 +19,5 @@
         })
     })
 </script>
+
+<?= $this->session->flashdata('login'); ?>

@@ -11,7 +11,7 @@ include('templates/config.php');
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="keywords" content="">
   <meta name="description" content="">
-  <title>Rental Mobil | Update Password</title>
+  <title>Update Password | Rentso.</title>
   <?php include('templates/style.php'); ?>
 </head>
 
@@ -29,13 +29,10 @@ include('templates/config.php');
     <div class="container">
       <div class="user_profile_info">
         <div class="col-md-12 col-sm-10">
-          <?php
-          $mail = $_SESSION['ulogin'];
-          ?>
-          <form method="post" action="update-passwordact.php">
+          <form method="post" action="">
             <div class="form-group">
               <label class="control-label">Current Password</label>
-              <input class="form-control white_bg" name="mail" id="mail" type="hidden" value="<?php echo $mail; ?>" required>
+              <input class="form-control white_bg" name="mail" id="mail" type="hidden" value="<?= $email ?>" required>
               <input class="form-control white_bg" name="pass" id="pass" type="password" required>
             </div>
             <div class="form-group">

@@ -14,7 +14,6 @@ class Auth extends CI_Controller
     {
         $email = htmlspecialchars($this->input->post('email', true));
         $password = $this->input->post('password', true);
-        var_dump($email);
         $user = $this->ModelUser->cekData(['email' => $email])->row_array(); //jika usernya ada 
         if ($user) {
             //cek password 

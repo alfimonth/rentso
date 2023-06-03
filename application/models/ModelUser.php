@@ -5,6 +5,12 @@ class ModelUser extends CI_Model
     {
         $this->db->insert('user', $data);
     }
+    public function updatePassword($pass, $email)
+    {
+        $this->db->set('password', $pass);
+        $this->db->where('email', $email);
+        $this->db->update('users');
+    }
     public function cekData($where = null)
     {
         // var_dump('a');die;

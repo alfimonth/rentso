@@ -1,5 +1,5 @@
 <!--Bootstrap -->
-<link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.mini.css" type="text/css">
+<link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.mina.css" type="text/css">
 <!--Custome Style -->
 <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css" type="text/css">
 <!--OWL Carousel slider-->

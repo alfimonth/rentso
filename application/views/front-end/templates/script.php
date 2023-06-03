@@ -5,3 +5,4 @@
 <script src="<?= base_url('assets/'); ?>js/bootstrap-slider.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/slick.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/owl.carousel.min.js"></script>
+<script src="<?= base_url('assets/'); ?>swal/sweetalert2.all.min1.js"></script>

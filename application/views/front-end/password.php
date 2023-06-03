@@ -1,7 +1,3 @@
-<?php
-error_reporting(0);
-include('templates/config.php');
-?>
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -75,6 +71,8 @@ include('templates/config.php');
     <!--/Forgot-password-Form -->
 
     <?php include('templates/script.php'); ?>
+
+    <?= $this->session->flashdata('pesan'); ?>
 
 </body>
 

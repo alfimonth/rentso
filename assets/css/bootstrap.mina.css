@@ -6205,9 +6205,7 @@ button.close {
 	background: 0 0;
 	border: 0;
 }
-.modal-open {
-	overflow: hidden;
-}
+
 .modal {
 	position: fixed;
 	top: 0;

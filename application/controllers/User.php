@@ -33,16 +33,10 @@ class User extends CI_Controller
                 // ganti password
                 $newpass = password_hash($newpass, PASSWORD_DEFAULT);
                 $this->ModelUser->updatePassword($newpass, $email);
-                echo
-                "<script type='text/javascript'>
-				alert('Password berhasil dirubah!'); 
-				</script>";
+                $this->session->set_flashdata('up-pass', "<script>Swal.fire({icon: 'success',title: 'Password berhasil diubah', showConfirmButton: false,timer: 1500})</script>");
+                redirect('');
             } else {
-                echo
-                "<script type='text/javascript'>
-				alert('Password lama salah!'); 
-				</script>";
-                // $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Password lama salah!!</div>');
+                $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'error',title: 'current password salah',})</script>");
                 $this->load->view('front-end/password', $data);
             }
         }

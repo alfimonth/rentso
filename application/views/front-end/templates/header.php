@@ -42,27 +42,30 @@
         <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       </div>
       <div class="header_wrap">
-        <div class="user_login">
 
-          <?php if (!empty($this->session->userdata('email'))) : ?>
+
+        <?php if (!empty($this->session->userdata('email'))) : ?>
+          <div class="user_login">
             <ul>
               <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>
                   <?= $user; ?>
                   <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?= base_url('/user/profile'); ?>">Profile Settings</a></li>
-                  <li><a href="<?= base_url('/user/password'); ?>">Update Password</a></li>
+                  <li><a href="<?= base_url('/user/profile'); ?>">Profil</a></li>
+                  <li><a href="<?= base_url('/user/password'); ?>">Ubah Password</a></li>
                   <li><a href="<?= base_url('/user/history'); ?>">Riwayat Sewa</a></li>
-                  <li><a href="<?= base_url('/home/logout'); ?>">Sign Out</a></li>
+                  <li><a href="<?= base_url('/home/logout'); ?>">Logout</a></li>
                 </ul>
               </li>
             </ul>
-          <?php else : ?>
-            <li class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a> </li>
+          </div>
+        <?php else : ?>
+          <div class="user_login">
+            <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a>
+          </div>
+        <?php endif ?>
 
-          <?php endif ?>
 
-        </div>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="nav navbar-nav">

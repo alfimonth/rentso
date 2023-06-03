@@ -7,14 +7,18 @@ class User extends CI_Controller
     }
     public function profile()
     {
-        $this->load->view('front-end/profile');
+        $data['user'] = $this->session->userdata('nama');
+        $data['email'] = $this->session->userdata('email');
+        $this->load->view('front-end/profile', $data);
     }
     public function password()
     {
-        $this->load->view('front-end/password');
+        $data['user'] = $this->session->userdata('nama');
+        $this->load->view('front-end/password', $data);
     }
     public function history()
     {
-        $this->load->view('front-end/history');
+        $data['user'] = $this->session->userdata('nama');
+        $this->load->view('front-end/history', $data);
     }
 }

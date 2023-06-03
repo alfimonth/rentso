@@ -1,7 +1,7 @@
-.styleswitch.layoutswitch{
-	background:none repeat scroll 0 0 #f4f4f4;
+.styleswitch.layoutswitch {
+	background: none repeat scroll 0 0 #f4f4f4;
 	border: medium none !important;
-	color:#fff !important;
+	color: #fff !important;
 	display: inline-block;
 	height: auto;
 	margin: 3px 0;
@@ -9,15 +9,15 @@
 	text-align: center;
 	text-transform: uppercase;
 	width: 100%;
-	text-decoration:none !important;
-	-webkit-transition: all .3s ease-out;
-	-moz-transition: all .3s ease-out;
-	-ms-transition: all .3s ease-out;
-	-o-transition: all .3s ease-out;
-	transition: all .3s ease-out;
+	text-decoration: none !important;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
 }
-.styleswitch.layoutswitch:hover{
-	background:#000 !important;
+.styleswitch.layoutswitch:hover {
+	background: #000 !important;
 }
 .styleswitch {
 	background-color: #e425e9;
@@ -36,13 +36,13 @@
 .demo_changer {
 	z-index: 1001;
 	position: fixed;
-	left: -71px;
+	left: -500px;
 	top: 150px;
 	font-weight: 400 !important;
 }
 .purchase {
 	text-decoration: underline;
-	color: #4BACC6
+	color: #4bacc6;
 }
 .demoPanel {
 	position: relative;
@@ -50,101 +50,113 @@
 .evo-pop {
 	z-index: 10000;
 	width: 204px;
-	padding: 3px 3px 0
+	padding: 3px 3px 0;
 }
 .evo-pop-ie {
 	z-index: 10000;
 	width: 212px;
-	padding: 3px
+	padding: 3px;
 }
 .evo-palette td {
 	font-size: 1px;
 	border: solid 1px #c0c0c0;
 	padding: 7px;
-	cursor: pointer
+	cursor: pointer;
 }
 .evo-palette tr.top td {
-	border-bottom: 0
+	border-bottom: 0;
 }
 .evo-palette tr.in td {
 	border-top: 0;
-	border-bottom: 0
+	border-bottom: 0;
 }
 .evo-palette tr.bottom td {
-	border-top: 0
+	border-top: 0;
 }
 .evo-palette div.sep {
-	height: 3px
+	height: 3px;
 }
-.evo-palette, .evo-palette-ie {
+.evo-palette,
+.evo-palette-ie {
 	border-collapse: separate;
 	border-spacing: 4px 0;
-	*border-collapse:expression('separate', cellSpacing='2px')
+	*border-collapse: expression("separate", cellSpacing= "2px");
 }
-.evo-palette th, .evo-palette-ie th {
+.evo-palette th,
+.evo-palette-ie th {
 	border: 0;
 	padding: 5px 3px;
 	text-align: left;
 	font-weight: normal;
-	background: transparent!important
+	background: transparent !important;
 }
 .evo-palette-ie td {
 	font-size: 1px;
 	border: solid 1px #c0c0c0;
 	padding: 7px;
-	cursor: pointer
+	cursor: pointer;
 }
-.evo-palette2, .evo-palette2-ie {
+.evo-palette2,
+.evo-palette2-ie {
 	margin: auto;
-	border-collapse: collapse
+	border-collapse: collapse;
 }
-.evo-palette2 td, .evo-palette2-ie td {
+.evo-palette2 td,
+.evo-palette2-ie td {
 	font-size: 1px;
-	cursor: pointer
+	cursor: pointer;
 }
 .evo-palette2 td {
-	padding: 6px 7px
+	padding: 6px 7px;
 }
 .evo-palette2-ie td {
-	padding: 5px
+	padding: 5px;
 }
 .evo-palcenter {
 	padding: 5px;
-	text-align: center
+	text-align: center;
 }
-.evo-colorind, .evo-colorind-ie, .evo-colorind-ff {
+.evo-colorind,
+.evo-colorind-ie,
+.evo-colorind-ff {
 	border: solid 1px #c3c3c3;
 	width: 20px;
 	height: 20px;
-	float: right
+	float: right;
 }
 .evo-colorind {
 	position: relative;
-	top: 2px
+	top: 2px;
 }
 .evo-colorind-ie {
 	position: relative;
-	top: -23px
+	top: -23px;
 }
 .evo-colorbox-ie {
 	font-size: 8px;
-	padding: 3px 9px!important
+	padding: 3px 9px !important;
 }
 .evo-colortxt-ie {
 	position: relative;
-	top: -6px
+	top: -6px;
 }
-.evo-pop:after, .evo-pop-ie:after, .evo-colorind:after, .evo-colorind-ie:after, .evo-colorind-ff:after, .evo-color span:after, .evo-cHist:after {
+.evo-pop:after,
+.evo-pop-ie:after,
+.evo-colorind:after,
+.evo-colorind-ie:after,
+.evo-colorind-ff:after,
+.evo-color span:after,
+.evo-cHist:after {
 	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
-	font-size: 0
+	font-size: 0;
 }
 .evo-color {
 	width: 94px;
-	padding: 1px 3px 0 4px
+	padding: 1px 3px 0 4px;
 }
 .evo-color div {
 	border: solid 1px #808080;
@@ -154,23 +166,23 @@
 	margin-bottom: 5px;
 	width: 10px;
 	height: 10px;
-	float: left
+	float: left;
 }
 .evo-color span {
 	font-size: 15px;
 	margin: 1px 0 4px 3px;
-	float: left
+	float: left;
 }
 .evo-sep {
 	height: 10px;
-	font-size: 0
+	font-size: 0;
 }
 .evo-more {
 	padding: 4px 5px 4px;
-	font-size: smaller
+	font-size: smaller;
 }
 .evo-cHist {
-	padding: 3px
+	padding: 3px;
 }
 .evo-cHist div {
 	cursor: pointer;
@@ -179,23 +191,25 @@
 	margin: 5px;
 	width: 10px;
 	height: 10px;
-	float: left
+	float: left;
 }
 a.evo-hist {
-	margin-left: 6px
+	margin-left: 6px;
 }
 .evo-pointer {
-	cursor: pointer
+	cursor: pointer;
 }
 .evo-pop {
-	background: #FFFFFF;
-	border: 1px solid #DEDEDE;
+	background: #ffffff;
+	border: 1px solid #dedede;
 	padding: 10px !important;
 	width: 225px !important;
 	z-index: 10000;
 }
-.evo-colorind, .evo-colorind-ie, .evo-colorind-ff {
-	border: 1px solid #C3C3C3;
+.evo-colorind,
+.evo-colorind-ie,
+.evo-colorind-ff {
+	border: 1px solid #c3c3c3;
 	height: 20px;
 	position: absolute;
 	top: 11px;
@@ -205,7 +219,8 @@ a.evo-hist {
 .demo_changer p {
 	margin: 10px 0;
 }
-.demo_changer .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+.demo_changer .dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
 	background: #fff;
 }
 .demo_changer h4 {
@@ -213,7 +228,18 @@ a.evo-hist {
 	margin: 10px 0 !important;
 	text-transform: uppercase;
 }
-.demo_changer select:active, .demo_changer select:focus, .demo_changer select:hover, .demo_changer .button:active, .demo_changer .button:focus, .demo_changer .button:hover, .demo_changer .btn:active, .demo_changer .btn:focus, .demo_changer .btn:hover, .demo_changer .button:active, .demo_changer .button:focus, .demo_changer .button:hover {
+.demo_changer select:active,
+.demo_changer select:focus,
+.demo_changer select:hover,
+.demo_changer .button:active,
+.demo_changer .button:focus,
+.demo_changer .button:hover,
+.demo_changer .btn:active,
+.demo_changer .btn:focus,
+.demo_changer .btn:hover,
+.demo_changer .button:active,
+.demo_changer .button:focus,
+.demo_changer .button:hover {
 	box-shadow: none !important;
 }
 .demo_changer .button {
@@ -243,15 +269,16 @@ a.evo-hist {
 	padding: 2px;
 }
 .demo_changer img {
-	border: 4px solid #E1E1E1;
+	border: 4px solid #e1e1e1;
 	height: 32px;
 	margin: 2px !important;
 	width: 32px !important;
 }
 .demo_changer hr {
-	border-color: #E0E0E0;
+	border-color: #e0e0e0;
 }
-.demo_changer, .demo_changer p {
+.demo_changer,
+.demo_changer p {
 	color: #545454 !important;
 }
 .demo_changer h4 {
@@ -268,7 +295,7 @@ a.evo-hist {
 	margin-top: 10px;
 }
 .demo_changer .demo-icon {
-	background:#de302f ;
+	background: #de302f;
 	border-style: solid solid solid none;
 	border-width: 1px 1px 1px 0px;
 	border-color: #ddd;
@@ -276,7 +303,7 @@ a.evo-hist {
 	text-align: center;
 	padding: 2px;
 	float: right;
-	height:40px;
+	height: 40px;
 	line-height: 40px;
 	width: 40px;
 }
@@ -288,14 +315,14 @@ a.evo-hist {
 	float: right;
 	font-size: 12px;
 	padding: 6px;
-	width: 71px;
+	width: 500px;
 }
 .demo_changer .form_holder p {
 	font-size: 12px;
 }
 .color_display_2 {
 	clear: both;
-	color: #FFFFFF;
+	color: #ffffff;
 	display: inline-block;
 	font-size: 12px;
 	width: 31px !important;
@@ -305,13 +332,15 @@ a.evo-hist {
 	text-align: center;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 	text-transform: uppercase;
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 2px rgba(255, 255, 255, 0.3) inset, 0 1px 2px rgba(0, 0, 0, 0.29);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset,
+		0 0 2px rgba(255, 255, 255, 0.3) inset, 0 1px 2px rgba(0, 0, 0, 0.29);
 }
 .color_display_2 a {
 	color: #fff;
 	text-decoration: none;
 }
-.color_display_2 a:focus, .color_display_2 a:hover {
+.color_display_2 a:focus,
+.color_display_2 a:hover {
 	color: #ededed !important;
 	text-decoration: none;
 }
@@ -326,8 +355,8 @@ a.evo-hist {
 
 @media only screen and (max-width: 768px) {
 	.demo_changer {
-	display: none;
-}
+		display: none;
+	}
 }
 .demo_changer .btn {
 	width: 165px !important;
@@ -354,7 +383,8 @@ a.evo-hist {
 	margin-top: -2px;
 	vertical-align: middle;
 }
-.bootstrap-select.btn-group > .disabled, .bootstrap-select.btn-group .dropdown-menu li.disabled > a {
+.bootstrap-select.btn-group > .disabled,
+.bootstrap-select.btn-group .dropdown-menu li.disabled > a {
 	cursor: not-allowed;
 }
 .bootstrap-select.btn-group > .disabled:focus {
@@ -402,7 +432,11 @@ a.evo-hist {
 .bootstrap-select.btn-group .dropdown-menu li > dt small {
 	font-weight: normal;
 }
-.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a i.check-mark {
+.bootstrap-select.btn-group.show-tick
+	.dropdown-menu
+	li.selected
+	a
+	i.check-mark {
 	display: inline-block;
 	position: absolute;
 	right: 15px;
@@ -417,19 +451,21 @@ a.evo-hist {
 .bootstrap-select.btn-group .dropdown-menu li small {
 	padding-left: 0.5em;
 }
-.bootstrap-select.btn-group .dropdown-menu li:not(.disabled) > a:hover small, .bootstrap-select.btn-group .dropdown-menu li:not(.disabled) > a:focus small, .bootstrap-select.btn-group .dropdown-menu li.active:not(.disabled) > a small {
+.bootstrap-select.btn-group .dropdown-menu li:not(.disabled) > a:hover small,
+.bootstrap-select.btn-group .dropdown-menu li:not(.disabled) > a:focus small,
+.bootstrap-select.btn-group .dropdown-menu li.active:not(.disabled) > a small {
 	color: #64b1d8;
-	color: rgba(255,255,255,0.4);
+	color: rgba(255, 255, 255, 0.4);
 }
 .bootstrap-select.btn-group .dropdown-menu li > dt small {
 	font-weight: normal;
 }
 .bootstrap-select.show-menu-arrow .dropdown-toggle:before {
-	content: '';
+	content: "";
 	display: inline-block;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
-	border-bottom: 7px solid #CCC;
+	border-bottom: 7px solid #ccc;
 	border-bottom-color: rgba(0, 0, 0, 0.2);
 	position: absolute;
 	bottom: -4px;
@@ -437,7 +473,7 @@ a.evo-hist {
 	display: none;
 }
 .bootstrap-select.show-menu-arrow .dropdown-toggle:after {
-	content: '';
+	content: "";
 	display: inline-block;
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
@@ -468,7 +504,8 @@ a.evo-hist {
 	right: 13px;
 	left: auto;
 }
-.bootstrap-select.show-menu-arrow.open > .dropdown-toggle:before, .bootstrap-select.show-menu-arrow.open > .dropdown-toggle:after {
+.bootstrap-select.show-menu-arrow.open > .dropdown-toggle:before,
+.bootstrap-select.show-menu-arrow.open > .dropdown-toggle:after {
 	display: block;
 }
 .bootstrap-select.btn-group .no-results {

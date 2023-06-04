@@ -57,7 +57,7 @@ error_reporting(0);
     <div class="container">
       <div class="listing_detail_head row">
         <div class="col-md-9">
-          <h2><?= htmlentities($vehicle['nama_merek']); ?>, <?= htmlentities($vehicle['nama_mobil']); ?></h2>
+          <h2><?= htmlentities($vehicle['nama_merek']); ?> <?= htmlentities($vehicle['nama_mobil']); ?></h2>
         </div>
         <div class="col-md-3">
           <div class="price_info">
@@ -83,6 +83,11 @@ error_reporting(0);
               <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
                 <h5><?= htmlentities($vehicle['seating']); ?></h5>
                 <p>Seats</p>
+              </li>
+
+              <li> <i class="fa fa-car" aria-hidden="true"></i>
+                <h5><?= $this->ModelKendaraan->countUnit(['id_kendaraan' => $vehicle['id_mobil']]) ?></h5>
+                <p>Unit</p>
               </li>
             </ul>
           </div>

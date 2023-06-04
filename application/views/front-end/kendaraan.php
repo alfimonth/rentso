@@ -65,7 +65,7 @@ include('templates/format_rupiah.php');
                 <ul>
                   <li><i class="fa fa-user" aria-hidden="true"></i><?= htmlentities($vehicle['seating']); ?> Seats</li>
                   <li><i class="fa fa-calendar" aria-hidden="true"></i><?= htmlentities($vehicle['tahun']); ?> </li>
-                  <li><i class="fa fa-car" aria-hidden="true"></i><?= htmlentities($vehicle['bb']); ?></li>
+                  <li><i class="fa fa-car" aria-hidden="true"></i><?= $this->ModelKendaraan->countUnit(['id_kendaraan' => $vehicle['id_mobil']]) ?> Unit</li>
                 </ul>
                 <a href="<?= base_url('kendaraan/detail'); ?>/<?= htmlentities($vehicle['id_mobil']); ?>" class="btn">Lihat Detail <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
               </div>

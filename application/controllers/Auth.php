@@ -51,7 +51,6 @@ class Auth extends CI_Controller
         $item = array('email', 'id_user', 'nama');
         $this->session->unset_userdata($item);
         $this->session->set_flashdata('login', "<script>Swal.fire({icon: 'success',title: 'Logout Berhasil', showConfirmButton: false,timer: 1500})</script>");
-        $prev_url = $this->session->userdata('prev_url');
-        redirect($prev_url);
+        redirect();
     }
 }

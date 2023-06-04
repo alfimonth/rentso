@@ -48,6 +48,7 @@ class Kendaraan extends CI_Controller
         $data['now'] = $now;
 
         $this->form_validation->set_rules('vid', 'Id', 'required|trim', ['required' => 'Id tidak Boleh Kosong']);
+        $this->form_validation->set_rules('fromdate', 'fromdate', 'required|trim', ['required' => 'fromdate tidak Boleh Kosong']);
         if ($this->form_validation->run() == false) {
             $this->load->view('front-end/booking', $data);
         } else {
@@ -55,28 +56,129 @@ class Kendaraan extends CI_Controller
             $vid = $this->input->post('vid', true);
             $fromdate = $this->input->post('fromdate', true);
             $todate = $this->input->post('todate', true);
-            $pickup = $this->input->post('pickup', true);
+            $unit = $this->input->post('unit', true);
             $driver = $this->input->post('driver', true);
+
 
             if ($todate < $fromdate) {
                 $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Tanggal selesai harus lebih besar dari tanggal mulai sewa!',})</script>");
-                $prev_url = $this->session->userdata('prev_url');
-                redirect($prev_url);
-            }
-            if ($fromdate < $now) {
-                $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Minimal mulai sewa adalah besok',})</script>");
-                $prev_url = $this->session->userdata('prev_url');
-                redirect($prev_url);
-            }
-
-            //cek
-            $sql     = "SELECT kode_booking FROM cek_booking WHERE tgl_booking between '$fromdate' AND '$todate' AND id_mobil='$id' AND status!='Cancel'";
-            $query     = mysqli_query($koneksidb, $sql);
-            if (mysqli_num_rows($query) > 0) {
-                echo " <script> alert ('Mobil tidak tersedia di tanggal yang anda pilih, silahkan pilih tanggal lain!'); 
-		</script> ";
+                $this->load->view('front-end/booking', $data);
             } else {
-                echo "<script type='text/javascript'> document.location = 'booking_ready.php?vid=$id&mulai=$fromdate&selesai=$todate&driver=$driver&pickup=$pickup'; </script>";
+                if ($fromdate < $now) {
+                    $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Minimal mulai sewa adalah besok',})</script>");
+                    $this->load->view('front-end/booking', $data);
+                } else {
+                    if ($driver > $unit) {
+                        $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Driver tidak boleh melebihi unit',})</script>");
+                        $this->load->view('front-end/booking', $data);
+                    } else {
+                        $check = $this->ModelBooking->check($fromdate, $todate, $vid)->num_rows();
+                        if ($check > 0) {
+                            $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Mobil tidak tersedia di tanggal ini', text: 'Silahkan pilih tanggal lain'})</script>");
+                            $this->load->view('front-end/booking', $data);
+                        } else {
+                            $databooking = [
+                                'vid' => $vid,
+                                'fromdate' => $fromdate,
+                                'todate' => $todate,
+                                'unit' => $unit,
+                                'driver' => $driver,
+                            ];
+
+                            $this->session->set_userdata($databooking);
+                            $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'success',title: 'Kendaraan tersedia', showConfirmButton: false,timer: 1500})</script>");
+                            redirect(base_url() . 'kendaraan/ready');
+                        }
+                    }
+                }
+            }
+        }
+    }
+    public function ready()
+    {
+        cek_login();
+        $id = $this->session->userdata('vid');
+        $data['vid'] = $id;
+        $data['user'] = $this->session->userdata('nama');
+        $data['email'] = $this->session->userdata('email');
+        $vehicle = $this->ModelKendaraan->getOne(['id_mobil' => $id])->row_array();
+        $data['vehicle'] = $vehicle;
+        $unit = $this->session->userdata('unit');
+
+        $mulai = $this->session->userdata('fromdate');
+        $selesai = $this->session->userdata('todate');
+        $data['unit'] = $unit;
+        $data['driver'] = $this->session->userdata('driver');
+        $driver = $this->session->userdata('driver');
+
+        $start = new DateTime($mulai);
+        $finish = new DateTime($selesai);
+        $int = $start->diff($finish);
+        $dur = $int->days;
+        $durasi = $dur + 1;
+
+        $data['mulai'] = $mulai;
+        $data['selesai'] = $selesai;
+        $data['durasi'] = $durasi;
+        $data['driver'] = $driver;
+        $harga    = $vehicle['harga'];
+        $totalmobil = $durasi * $harga * $unit;
+        $data['totalmobil'] = $totalmobil;
+
+        $drive = intval($this->ModelPages->driver()->row_array()["detail"]);
+        if ($driver > 0) {
+            $drivercharges = $drive * $durasi * $driver;
+        } else {
+            $drivercharges = 0;
+        }
+        $data['drivercharges'] = $drivercharges;
+        $data['totalsewa'] = $totalmobil + $drivercharges;
+
+        $this->form_validation->set_rules('vid', 'Id', 'required|trim', ['required' => 'Id tidak Boleh Kosong']);
+        if ($this->form_validation->run() == false) {
+            $this->load->view('front-end/booking_ready', $data);
+        } else {
+
+            $last = $this->ModelBooking->last();
+            $kode = invoice($last);
+
+            $status = "Menunggu Pembayaran";
+            $bukti = "";
+            $tgl = date('Y-m-d');
+            //insert
+            $dataBooking = [
+                'kode_booking' => $kode,
+                'id_mobil' => $this->input->post('vid', true),
+                'tgl_mulai' => $this->input->post('fromdate', true),
+                'tgl_selesai' => $this->input->post('todate', true),
+                'durasi' => $this->input->post('durasi', true),
+                'driver' => $this->input->post('biayadriver', true),
+                'status' => $status,
+                'email' => $this->input->post('email', true),
+                'unit' => $this->input->post('unit', true),
+                'tgl_booking' => $tgl,
+            ];
+
+            $fromdate = $this->input->post('fromdate', true);
+            $durasi = $this->input->post('durasi', true);
+            $query = $this->ModelBooking->insertData($dataBooking);
+            $vid = $this->input->post('vid', true);
+            $cek = 0;
+
+
+            if ($query) {
+                for ($cek; $cek < $durasi; $cek++) {
+                    $tglmulai = strtotime($fromdate);
+                    $jmlhari  = 86400 * $cek;
+                    $tgl      = $tglmulai + $jmlhari;
+                    $tglhasil = date("Y-m-d", $tgl);
+                    $this->ModelBooking->insertCheck($kode, $vid, $tglhasil, $status, $unit);
+                }
+                $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'success',title: 'Kendaraan berhasil disewa', showConfirmButton: false,timer: 1500})</script>");
+                redirect(base_url('/user/booking/') . $kode);
+            } else {
+                $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Terjadi Kesalahan', showConfirmButton: false,timer: 1500})</script>");
+                redirect('');
             }
         }
     }

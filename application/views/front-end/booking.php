@@ -33,41 +33,51 @@ include('templates/format_rupiah.php');
 			<div class="col-md-6 col-sm-8">
 				<div class="product-listing-img"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($vehicle['image1']); ?>" class="img-responsive" alt="Image" /> </a> </div>
 				<div class="product-listing-content">
-					<h5><?= htmlentities($vehicle['nama_merek']); ?> , <?= htmlentities($vehicle['nama_mobil']); ?></a></h5>
+					<h5><?= htmlentities($vehicle['nama_merek']); ?> <?= htmlentities($vehicle['nama_mobil']); ?></a></h5>
 					<p class="list-price"><?= htmlentities(format_rupiah($vehicle['harga'])); ?> / Hari</p>
 					<ul>
 						<li><i class="fa fa-user" aria-hidden="true"></i><?= htmlentities($vehicle['seating']); ?> Seats</li>
 						<li><i class="fa fa-calendar" aria-hidden="true"></i><?= htmlentities($vehicle['tahun']); ?> </li>
-						<li><i class="fa fa-car" aria-hidden="true"></i><?= htmlentities($vehicle['bb']); ?></li>
+						<li><i class="fa fa-car" aria-hidden="true"></i><?= $this->ModelKendaraan->countUnit(['id_kendaraan' => $vehicle['id_mobil']]) ?> Unit</li>
 					</ul>
 				</div>
 			</div>
 
 			<div class="user_profile_info">
 				<div class="col-md-12 col-sm-10">
-					<form method="post" name="sewa" >
+					<form method="post" name="sewa" action="<?= base_url('kendaraan/booking/') . $id; ?>">
 						<input type="hidden" class="form-control" name="vid" value="<?= $id; ?>" required>
 						<div class="form-group">
 							<label>Tanggal Mulai</label>
-							<input type="date" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)" required>
+							<input type="date" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)" value="<?= set_value('fromdate') ?>" required>
 							<input type="hidden" name="now" class="form-control" value="<?= $now; ?>">
 						</div>
 						<div class="form-group">
 							<label>Tanggal Selesai</label>
-							<input type="date" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)" required>
+							<input type="date" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)" value="<?= set_value('todate') ?>" required>
+						</div>
+						<div class=" form-group">
+							<label>Jumlah unit</label><br />
+							<?php
+							if (set_value('unit') === '') {
+								$unitv = 1;
+							} else {
+								$unitv = set_value('unit');
+							}
+							?>
+							<input type="number" class="form-control" name="unit" value="<?= $unitv; ?>" min="1" max="<?= $this->ModelKendaraan->countUnit(['id_kendaraan' => $vehicle['id_mobil']]) ?>" required>
 						</div>
 						<div class="form-group">
-							<label>Metode Pickup</label><br />
-							<select class="form-control" name="pickup" required>
-								<option value="">== Metode Pickup ==</option>
-								<option value="Ambil Sendiri">Ambil Sendiri</option>
-								<option value="Pickup Sesuai Alamat">Pickup Sesuai Alamat</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label>Driver</label><br />
-							<input type="radio" name="driver" value="1" checked> Ya &nbsp;
-							<input type="radio" name="driver" value="0"> Tidak
+							<label>Sewa Driver</label><br />
+
+							<?php
+							if (set_value('driver') === '') {
+								$driverv = 0;
+							} else {
+								$driverv = set_value('driver');
+							}
+							?>
+							<input type="number" class="form-control" name="driver" value="<?= $driverv ?>" min="0" max="<?= $this->ModelKendaraan->countUnit(['id_kendaraan' => $vehicle['id_mobil']]) ?>" required>
 						</div>
 						<br />
 						<div class="form-group">

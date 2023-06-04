@@ -68,7 +68,7 @@ include('templates/format_rupiah.php');
                 <div class="recent-car-list">
                   <div class="car-info-box"> <a href="<?= base_url(); ?>kendaraan/detail/<?= $vehicle['id_mobil']; ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= $vehicle['image1']; ?>" class="img-responsive" alt="image"></a>
                     <ul>
-                      <li><i class="fa fa-car" aria-hidden="true"></i><?= $vehicle['bb']; ?></li>
+                      <li><i class="fa fa-car" aria-hidden="true"></i><?= $this->ModelKendaraan->countUnit(['id_kendaraan' => $vehicle['id_mobil']]) ?> unit</li>
                       <li><i class="fa fa-calendar" aria-hidden="true"></i><?= $vehicle['tahun']; ?> Model</li>
                       <li><i class="fa fa-user" aria-hidden="true"></i><?= $vehicle['seating']; ?> Seats</li>
                     </ul>
@@ -109,6 +109,7 @@ include('templates/format_rupiah.php');
 
 
   <?= $this->session->flashdata('up-pass'); ?>
+  <?= $this->session->flashdata('booking'); ?>
 
 
 

@@ -139,6 +139,19 @@ $tglhasil = date("Y-m-d", $tgl);
 						<td>:</td>
 						<td><?php echo $result['status']; ?></td>
 					</tr>
+					<tr>
+						<td>
+
+
+
+
+						</td>
+
+					</tr>
+					<tr>
+						<td></td>
+					</tr>
+
 					<?php
 					if ($result['status'] == "Menunggu Pembayaran") {
 						$sqlrek 	= "SELECT * FROM tblpages WHERE id='5'";

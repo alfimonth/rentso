@@ -108,7 +108,7 @@ if (isset($_POST['send'])) {
         </div>
         <div class="col-md-6">
           <h3>Info Kontak</h3>
-          <div class="contact_detail">
+          <div class="contact_detail" style="overflow:hidden;">
             <?php
             $pagetype = $_GET['type'];
             $sql1 = "SELECT * from contactusinfo";
@@ -120,7 +120,7 @@ if (isset($_POST['send'])) {
                   <li>
                     <div class="icon_wrap"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
                     <div class="contact_info_m">
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.24341515192!2d110.82757327400496!3d-7.548413692465172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a169541c2991d%3A0xb1763d1602f8329f!2sUniversitas%20Bina%20Sarana%20Informatika%20Kampus%20Solo%20(Universitas%20BSI%20Solo)!5e0!3m2!1sid!2sid!4v1685030171637!5m2!1sid!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1977.598112955321!2d110.82681063446!3d-7.553570596206431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1685934493959!5m2!1sid!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                       <?php echo htmlentities($result['alamat_kami']); ?>
                     </div>
                   </li>

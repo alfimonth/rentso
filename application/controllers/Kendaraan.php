@@ -177,7 +177,7 @@ class Kendaraan extends CI_Controller
                 $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'success',title: 'Kendaraan berhasil disewa', showConfirmButton: false,timer: 1500})</script>");
                 redirect(base_url('/user/booking/') . $kode);
             } else {
-                $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Terjadi Kesalahan', showConfirmButton: false,timer: 1500})</script>");
+                $this->session->set_flashdata('bookingfail', "<script>Swal.fire({icon: 'error',title: 'Terjadi Kesalahan', showConfirmButton: false,timer: 1500})</script>");
                 redirect('');
             }
         }

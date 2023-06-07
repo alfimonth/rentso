@@ -294,10 +294,10 @@ error_reporting(0);
 
             <div class="col-md-3 grid_listing">
               <div class="product-listing-m gray-bg">
-                <div class="product-listing-img"> <a href="vehical-details.php?vhid=<?= htmlentities($vehicle['id']); ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($vehicle['image1']); ?>" class="img-responsive" alt="image" /> </a>
+                <div class="product-listing-img"> <a href="<?= base_url(); ?>kendaraan/detail/<?= $vehicle['id_mobil']; ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($vehicle['image1']); ?>" class="img-responsive" alt="image" /> </a>
                 </div>
                 <div class="product-listing-content">
-                  <h5><a href="vehical-details.php?vhid=<?= htmlentities($vehicle['id']); ?>"><?= htmlentities($vehicle['nama_merek']); ?> <?= htmlentities($vehicle['nama_mobil']); ?></a></h5>
+                  <h5><a href="<?= base_url(); ?>kendaraan/detail/<?= $vehicle['id_mobil']; ?>"><?= htmlentities($vehicle['nama_merek']); ?> <?= htmlentities($vehicle['nama_mobil']); ?></a></h5>
                   <p class="list-price"><?= htmlentities(format_rupiah($vehicle['harga'])); ?></p>
 
                   <ul class="features_list">

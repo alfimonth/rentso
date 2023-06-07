@@ -14,7 +14,6 @@ include('templates/format_rupiah.php');
   <meta name="description" content="">
   <title>Home | Rentso.</title>
   <!--Bootstrap -->
-  <link rel="manifest" href="manifest.json">
   <?php include('templates/style.php'); ?>
 </head>
 
@@ -109,7 +108,7 @@ include('templates/format_rupiah.php');
 
 
   <?= $this->session->flashdata('up-pass'); ?>
-  <?= $this->session->flashdata('booking'); ?>
+  <?= $this->session->flashdata('bookingfail'); ?>
 
 
 

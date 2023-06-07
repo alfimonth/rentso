@@ -19,4 +19,9 @@ class ModelBooking extends CI_Model
     {
         return $this->db->query("INSERT INTO cek_booking (kode_booking,id_mobil,tgl_booking,status,unit)VALUES('$kode','$vid','$tglhasil','$status','$unit')");
     }
+    public function getBooking()
+    {
+        return $this->db->query("SELECT booking.*,kendaraan.*,merek.*,users.* FROM booking,kendaraan,merek,users WHERE booking.id_mobil=kendaraan.id_mobil
+        AND merek.id_merek=kendaraan.id_merek AND users.email=booking.email ORDER BY booking.kode_booking DESC");
+    }
 }

@@ -46,7 +46,7 @@ include('includes/config.php');
 													<div class="stat-panel-title text-uppercase">Menunggu Pembayaran</div>
 												</div>
 											</div>
-											<a href="sewa_bayar.php" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="<?= base_url('sewa/bayar'); ?>" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 
@@ -63,7 +63,7 @@ include('includes/config.php');
 													<div class="stat-panel-title text-uppercase">Menunggu Konfirmasi</div>
 												</div>
 											</div>
-											<a href="sewa_konfirmasi.php" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="<?= base_url('sewa/konfirmasi'); ?>" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 

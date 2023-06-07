@@ -5,6 +5,7 @@ class User extends CI_Controller
     {
         parent::__construct();
         cek_login();
+        save_url();
     }
     public function profile()
     {
@@ -72,23 +73,35 @@ class User extends CI_Controller
     }
     public function bukti()
     {
-        include('includes/config.php');
+        # Konek ke Web Server Lokal
+        $myHost  = "localhost";
+        $myUser  = "root";
+        $myPass  = "";
+        $myDbs  = "rentso_db";
+
+        $koneksidb = mysqli_connect($myHost, $myUser, $myPass, $myDbs);
+        if (!$koneksidb) {
+            echo "Failed Connection !";
+        }
+
 
         $image1 = $_FILES["img1"]["name"];
         $newimg1 = date('dmYHis') . $image1;
-        $kode = $_POST['kode'];
+        $kode = $this->input->post('kode', true);
         $stt = "Menunggu Konfirmasi";
 
-        move_uploaded_file($_FILES["img1"]["tmp_name"], "image/bukti/" . $newimg1);
+        move_uploaded_file($_FILES["img1"]["tmp_name"], "assets/images/user/bukti/" . $newimg1);
 
+        
         $sql = "UPDATE booking SET bukti_bayar='$newimg1', status='$stt' WHERE kode_booking='$kode'";
         $lastInsertId = mysqli_query($koneksidb, $sql);
         if ($lastInsertId) {
-            echo "<script>alert('Upload Bukti Pembayaran Berhasil!');</script>";
-            echo "<script type='text/javascript'> document.location = 'riwayatsewa.php'; </script>";
+            $this->session->set_flashdata('bukti', "<script>Swal.fire({icon: 'success',title: 'Upload bukti pembayaran berhasil', showConfirmButton: false,timer: 1500})</script>");
+            redirect(base_url('/user/history/'));
         } else {
-            echo "<script>alert('Ops, terjadi kesalahan. Silahkan coba lagi.');</script>";
-            echo "<script type='text/javascript'> document.location = 'bookingedit.php?kode'" . $kode . "'; </script>";
+            $this->session->set_flashdata('bukti', "<script>Swal.fire({icon: 'errorr',title: 'Terjadi kesalahan', showConfirmButton: false,timer: 1500})</script>");
+            $prev_url = $this->session->userdata('prev_url');
+            redirect($prev_url);
         }
     }
 }

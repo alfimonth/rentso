@@ -116,6 +116,7 @@ include('templates/library.php');
 	<?php include('templates/footer.php'); ?>
 
 	<?php include('templates/script.php'); ?>
+	<?= $this->session->flashdata('bukti'); ?>
 </body>
 
 </html>

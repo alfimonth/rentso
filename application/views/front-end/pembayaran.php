@@ -47,44 +47,44 @@ include('templates/library.php');
 		<div class="container">
 			<div class="user_profile_info">
 				<div class="col-md-12 col-sm-10">
-					<form method="post" action="<?= base_url('user/bukti')?>" name="sewa" onSubmit="return valid();" enctype="multipart/form-data">
-						<input type="hidden" class="form-control" name="vid" value="<?php echo $vid; ?>" required>
-						<div class="form-group">
-							<label>Kode Sewa</label>
-							<input type="text" class="form-control" name="kode" value="<?php echo $result['kode_booking']; ?>" readonly>
-						</div>
-						<input type="hidden" class="form-control" name="vid" value="<?php echo $vid; ?>" required>
+					<form method="post" action="<?= base_url('user/bukti') ?>" name="sewa" onSubmit="return valid();" enctype="multipart/form-data">
+						<input type="hidden" class="form-control" name="vid" value="<?= $vid; ?>" required>
+						<!-- <div class="form-group">
+							<label>Kode Sewa</label> -->
+						<input type="hidden" class="form-control" name="kode" value="<?= $result['kode_booking']; ?>" readonly>
+						<!-- </div>
+						<input type="hidden" class="form-control" name="vid" value="<?= $vid; ?>" required>
 						<div class="form-group">
 							<label>Mobil</label>
-							<input type="text" class="form-control" name="mobil" value="<?php echo $result['nama_merek'];
+							<input type="text" class="form-control" name="mobil" value="<?= $result['nama_merek'];
 																						echo ", ";
 																						echo $result['nama_mobil']; ?>" readonly>
 						</div>
 						<div class="form-group">
 							<label>Tanggal Mulai</label>
-							<input type="date" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)" value="<?php echo $result['tgl_mulai']; ?>" readonly>
+							<input type="date" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)" value="<?= $result['tgl_mulai']; ?>" readonly>
 						</div>
 						<div class="form-group">
 							<label>Tanggal Selesai</label>
-							<input type="date" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)" value="<?php echo $result['tgl_selesai']; ?>" readonly>
+							<input type="date" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)" value="<?= $result['tgl_selesai']; ?>" readonly>
 						</div>
 						<div class="form-group">
 							<label>Durasi</label>
-							<input type="text" class="form-control" name="durasi" value="<?php echo $durasi; ?> Hari" readonly>
+							<input type="text" class="form-control" name="durasi" value="<?= $durasi; ?> Hari" readonly>
 						</div>
 						<div class="form-group">
-							<label>Biaya Mobil (<?php echo $durasi; ?> Hari)</label><br />
-							<input type="text" class="form-control" name="biayamobil" value="<?php echo format_rupiah($totalmobil); ?>" readonly>
+							<label>Biaya Mobil (<?= $durasi; ?> Hari)</label><br />
+							<input type="text" class="form-control" name="biayamobil" value="<?= format_rupiah($totalmobil); ?>" readonly>
 						</div>
 						<div class="form-group">
-							<label>Biaya Driver (<?php echo $durasi; ?> Hari)</label><br />
-							<input type="hidden" class="form-control" name="biayadriver" value="<?php echo $drivercharges; ?>" readonly>
-							<input type="text" class="form-control" name="driver" value="<?php echo format_rupiah($drivercharges); ?>" readonly>
+							<label>Biaya Driver (<?= $durasi; ?> Hari)</label><br />
+							<input type="hidden" class="form-control" name="biayadriver" value="<?= $drivercharges; ?>" readonly>
+							<input type="text" class="form-control" name="driver" value="<?= format_rupiah($drivercharges); ?>" readonly>
 						</div>
 						<div class="form-group">
-							<label>Total Biaya Sewa (<?php echo $durasi; ?> Hari)</label><br />
-							<input type="text" class="form-control" name="total" value="<?php echo format_rupiah($totalsewa); ?>" readonly>
-						</div>
+							<label>Total Biaya Sewa (<?= $durasi; ?> Hari)</label><br />
+							<input type="text" class="form-control" name="total" value="<?= format_rupiah($totalsewa); ?>" readonly>
+						</div> -->
 						<div class="form-group">
 							<label>Upload Bukti Pembayaran</label><br />
 							<input type="file" class="form-control" name="img1" accept="image/*" required>
@@ -103,6 +103,7 @@ include('templates/library.php');
 
 	<!-- Scripts -->
 	<?php include('templates/script.php'); ?>
+	<?= $this->session->flashdata('bukti'); ?>
 </body>
 
 </html>

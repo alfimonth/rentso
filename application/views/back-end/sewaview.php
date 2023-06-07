@@ -41,7 +41,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Kode Sewa</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo $result['kode_booking']; ?></td>
+				<td width="78%"><?= $result['kode_booking']; ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -49,7 +49,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Mobil</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo $result['nama_merek']; ?>, <?php echo $result['nama_mobil']; ?></td>
+				<td width="78%"><?= $result['nama_merek']; ?>, <?= $result['nama_mobil']; ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -57,7 +57,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Tanggal Mulai</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo IndonesiaTgl($result['tgl_mulai']); ?></td>
+				<td width="78%"><?= IndonesiaTgl($result['tgl_mulai']); ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -65,7 +65,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Tanggal Selesai</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo IndonesiaTgl($result['tgl_selesai']); ?></td>
+				<td width="78%"><?= IndonesiaTgl($result['tgl_selesai']); ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -73,7 +73,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Durasi</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo $result['durasi']; ?></td>
+				<td width="78%"><?= $result['durasi']; ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -81,7 +81,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Jumlah Unit</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo $result['unit']; ?></td>
+				<td width="78%"><?= $result['unit']; ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -89,7 +89,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Penyewa</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo $result['nama_user']; ?></td>
+				<td width="78%"><?= $result['nama_user']; ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -97,7 +97,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Biaya Driver</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo $result['driver']; ?></td>
+				<td width="78%"><?= $result['driver']; ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -105,7 +105,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Biaya Mobil</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo $biayamobil; ?></td>
+				<td width="78%"><?= $biayamobil; ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -113,7 +113,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Total Biaya</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo $total; ?></td>
+				<td width="78%"><?= $total; ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -121,7 +121,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Status</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?php echo $result['status']; ?></td>
+				<td width="78%"><?= $result['status']; ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -136,7 +136,7 @@ if ($kode != null) {
 				<?php
 				} else {
 				?>
-					<td width="78%"><img src="../image/bukti/<?php echo htmlentities($result['bukti_bayar']); ?>" width="120" height="150"></td>
+					<td width="78%"><img src="<?= base_url('assets/images/user/bukti/') ?><?= htmlentities($result['bukti_bayar']); ?>" width="120" height="150"></td>
 				<?php
 				}
 				?>

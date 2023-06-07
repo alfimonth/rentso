@@ -96,7 +96,7 @@ include('includes/library.php');
 												<td><?= htmlentities($result['status']); ?></td>
 												<td>
 													<a href="#myModal" data-toggle="modal" data-load-code="<?= $result['kode_booking']; ?>" data-remote-target="#myModal .modal-body"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;&nbsp;&nbsp;
-													<a href="sewaeditbayar.php?id=<?= $result['kode_booking']; ?>"><i class="fa fa-edit"></i></a>
+													<a href="<?= base_url('sewa/edit/') . $result['kode_booking']; ?>"><i class="fa fa-edit"></i></a>
 												</td>
 											</tr>
 										<?php } ?>

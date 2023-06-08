@@ -9,4 +9,8 @@ class Mobil extends CI_Controller
     {
         $this->load->view('back-end/mobil');
     }
+    public function merek()
+    {
+        $this->load->view('back-end/merek');
+    }
 }

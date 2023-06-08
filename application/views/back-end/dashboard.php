@@ -42,7 +42,7 @@ include('includes/config.php');
 													$querybayar = mysqli_query($koneksidb, $sqlbayar);
 													$bayar = mysqli_num_rows($querybayar);
 													?>
-													<div class="stat-panel-number h1 "><?php echo htmlentities($bayar); ?></div>
+													<div class="stat-panel-number h1 "><?= htmlentities($bayar); ?></div>
 													<div class="stat-panel-title text-uppercase">Menunggu Pembayaran</div>
 												</div>
 											</div>
@@ -59,7 +59,7 @@ include('includes/config.php');
 													$querykonfir = mysqli_query($koneksidb, $sqlkonfir);
 													$konfir = mysqli_num_rows($querykonfir);
 													?>
-													<div class="stat-panel-number h1 "><?php echo htmlentities($konfir); ?></div>
+													<div class="stat-panel-number h1 "><?= htmlentities($konfir); ?></div>
 													<div class="stat-panel-title text-uppercase">Menunggu Konfirmasi</div>
 												</div>
 											</div>
@@ -76,11 +76,11 @@ include('includes/config.php');
 													$querybelum = mysqli_query($koneksidb, $sqlbelum);
 													$belum = mysqli_num_rows($querybelum);
 													?>
-													<div class="stat-panel-number h1 "><?php echo htmlentities($belum); ?></div>
+													<div class="stat-panel-number h1 "><?= htmlentities($belum); ?></div>
 													<div class="stat-panel-title text-uppercase">Belum Dikembalikan</div>
 												</div>
 											</div>
-											<a href="sewa_kembali.php" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="<?= base_url('sewa/pengembalian'); ?>" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -100,7 +100,7 @@ include('includes/config.php');
 													$query3 = mysqli_query($koneksidb, $sql3);
 													$brands = mysqli_num_rows($query3);
 													?>
-													<div class="stat-panel-number h1 "><?php echo htmlentities($brands); ?></div>
+													<div class="stat-panel-number h1 "><?= htmlentities($brands); ?></div>
 													<div class="stat-panel-title text-uppercase">Total Merek</div>
 												</div>
 											</div>
@@ -117,30 +117,29 @@ include('includes/config.php');
 													$query1 = mysqli_query($koneksidb, $sql1);
 													$totalvehicle = mysqli_num_rows($query1);
 													?>
-													<div class="stat-panel-number h1 "><?php echo htmlentities($totalvehicle); ?></div>
+													<div class="stat-panel-number h1 "><?= htmlentities($totalvehicle); ?></div>
 													<div class="stat-panel-title text-uppercase">Jumlah Mobil</div>
 												</div>
 											</div>
-											<a href="mobil.php" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="<?= base_url('mobil'); ?>" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="panel panel-default">
+											<div class="panel-body bk-primary text-light">
+												<div class="stat-panel text-center">
+													<?php
+													$totalvehicle = $this->ModelKendaraan->unitTotal();
+													?>
+													<div class="stat-panel-number h1 "><?= htmlentities($totalvehicle); ?></div>
+													<div class="stat-panel-title text-uppercase">Total Unit</div>
+												</div>
+											</div>
+											<a href="<?= base_url('sewa/bayar'); ?>" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 
-									<div class="col-md-4">
-										<div class="panel panel-default">
-											<div class="panel-body bk-warning text-light">
-												<div class="stat-panel text-center">
-													<?php
-													$sql2 = "SELECT kode_booking FROM booking";
-													$query2 = mysqli_query($koneksidb, $sql2);
-													$bookings = mysqli_num_rows($query2);
-													?>
-													<div class="stat-panel-number h1 "><?php echo htmlentities($bookings); ?></div>
-													<div class="stat-panel-title text-uppercase">Total Sewa</div>
-												</div>
-											</div>
-											<a href="sewa.php" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
-										</div>
-									</div>
+
 								</div>
 							</div>
 						</div>
@@ -152,6 +151,23 @@ include('includes/config.php');
 
 									<div class="col-md-4">
 										<div class="panel panel-default">
+											<div class="panel-body bk-warning text-light">
+												<div class="stat-panel text-center">
+													<?php
+													$sql2 = "SELECT kode_booking FROM booking";
+													$query2 = mysqli_query($koneksidb, $sql2);
+													$bookings = mysqli_num_rows($query2);
+													?>
+													<div class="stat-panel-number h1 "><?= htmlentities($bookings); ?></div>
+													<div class="stat-panel-title text-uppercase">Total Sewa</div>
+												</div>
+											</div>
+											<a href="<?= base_url('sewa'); ?>" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
+										</div>
+									</div>
+
+									<div class="col-md-4">
+										<div class="panel panel-default">
 											<div class="panel-body bk-primary text-light">
 												<div class="stat-panel text-center">
 													<?php
@@ -159,7 +175,7 @@ include('includes/config.php');
 													$query = mysqli_query($koneksidb, $sql);
 													$regusers = mysqli_num_rows($query);
 													?>
-													<div class="stat-panel-number h1 "><?php echo htmlentities($regusers); ?></div>
+													<div class="stat-panel-number h1 "><?= htmlentities($regusers); ?></div>
 													<div class="stat-panel-title text-uppercase">User</div>
 												</div>
 											</div>
@@ -176,7 +192,7 @@ include('includes/config.php');
 													$query5 = mysqli_query($koneksidb, $sql5);
 													$query = mysqli_num_rows($query5);
 													?>
-													<div class="stat-panel-number h1 "><?php echo htmlentities($query); ?></div>
+													<div class="stat-panel-number h1 "><?= htmlentities($query); ?></div>
 													<div class="stat-panel-title text-uppercase">Menghubungi</div>
 												</div>
 											</div>
@@ -189,15 +205,6 @@ include('includes/config.php');
 						</div>
 					</div>
 				</div>
-
-
-
-
-
-
-
-
-
 			</div>
 		</div>
 	</div>

@@ -4,10 +4,10 @@
 			<li><a href="<?= base_url('admin/'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 			<li><a href="#"><i class="fa fa-exchange"></i> Sewa</a>
 				<ul class="ts-sidebar-menu">
+					<li><a href="<?= base_url('sewa'); ?>">Data Sewa</a></li>
 					<li><a href="<?= base_url('sewa/bayar'); ?>">Menunggu Pembayaran</a></li>
 					<li><a href="<?= base_url('sewa/konfirmasi'); ?>">Menunggu Konfirmasi</a></li>
 					<li><a href="<?= base_url('sewa/pengembalian'); ?>">Pengembalian</a></li>
-					<li><a href="<?= base_url('sewa'); ?>">Data Sewa</a></li>
 				</ul>
 			</li>
 			<li><a href="#"><i class="fa fa-car"></i> Mobil</a>

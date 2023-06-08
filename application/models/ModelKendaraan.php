@@ -7,6 +7,11 @@ class ModelKendaraan extends CI_Model
         $this->db->join('merek', 'kendaraan.id_merek = merek.id_merek');
         return $this->db->get();
     }
+    public function unitTotal()
+    {
+        $this->db->from('unit');
+        return $this->db->count_all_results();
+    }
     public function getLimit($limit)
     {
         $this->db->from('kendaraan');

@@ -211,6 +211,7 @@ include('includes/config.php');
 
 	<!-- Loading Scripts -->
 	<?php include('includes/script.php'); ?>
+	<?= $this->session->flashdata('login'); ?>
 
 
 	<script>

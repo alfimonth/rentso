@@ -36,6 +36,41 @@ class Auth extends CI_Controller
             redirect($prev_url);
         }
     }
+    public function login()
+    {
+        cek_admin();
+
+        $this->form_validation->set_rules('username', 'Nama Lengkap', 'required|trim', ['required' => 'Nama tidak Boleh Kosong']);
+        if ($this->form_validation->run() == false) {
+            $this->load->view('back-end/login');
+        } else {
+            $myHost    = "localhost";
+            $myUser    = "root";
+            $myPass    = "";
+            $myDbs    = "rentso_db";
+
+            $koneksidb = mysqli_connect($myHost, $myUser, $myPass, $myDbs);
+            if (!$koneksidb) {
+                echo "Failed Connection !";
+            }
+
+            $email = $this->input->post('username', true);
+            $password = md5($this->input->post('password', true));
+            $sql = "SELECT * FROM admin WHERE UserName='$email' AND Password='$password'";
+            $query = mysqli_query($koneksidb, $sql);
+            $results = mysqli_fetch_array($query);
+            if (mysqli_num_rows($query) > 0) {
+                $data = [
+                    'username' => $email
+                ];
+                $this->session->set_userdata($data);
+                $this->session->set_flashdata('login', "<script>Swal.fire({icon: 'success',title: 'Login berhasil Berhasil', showConfirmButton: false,timer: 1500})</script>");
+                redirect(base_url('admin/'));
+            } else {
+                $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'success',title: 'Username/Password Salah', showConfirmButton: false,timer: 1500})</script>");
+            }
+        }
+    }
     public function register()
     {
 

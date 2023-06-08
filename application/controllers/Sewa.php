@@ -45,4 +45,10 @@ class Sewa extends CI_Controller
         $data['kode'] = $code;
         $this->load->view('back-end/sewaview', $data);
     }
+    public function userview($code)
+    {
+        $data['kode'] = $code;
+
+        $this->load->view('back-end/userview', $data);
+    }
 }

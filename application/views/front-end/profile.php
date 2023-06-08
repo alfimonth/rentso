@@ -102,42 +102,42 @@ if (isset($_POST['updateprofile'])) {
 
           <div class="col-md-12 col-sm-10">
             <?php
-            if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
+            if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?= htmlentities($msg); ?> </div><?php } ?>
             <form method="post" name="theform" onSubmit="return checkLetter(this);">
               <div class="form-group">
                 <label class="control-label">Tanggal Daftar -</label>
-                <?php echo htmlentities($result['RegDate']); ?>
+                <?= htmlentities($result['RegDate']); ?>
               </div>
               <?php if ($result['UpdationDate'] != "") { ?>
                 <div class="form-group">
                   <label class="control-label">Terakhir diupdate pada -</label>
-                  <?php echo htmlentities($result['UpdationDate']); ?>
+                  <?= htmlentities($result['UpdationDate']); ?>
                 </div>
               <?php } ?>
               <div class="form-group">
                 <label class="control-label">Nama</label>
-                <input class="form-control white_bg" name="fullname" value="<?php echo htmlentities($result['nama_user']); ?>" id="fullname" type="text" required>
+                <input class="form-control white_bg" name="fullname" value="<?= htmlentities($result['nama_user']); ?>" id="fullname" type="text" required>
               </div>
               <div class="form-group">
                 <label class="control-label">Alamat Email</label>
-                <input class="form-control white_bg" value="<?php echo htmlentities($result['email']); ?>" name="email" id="email" type="email" required readonly>
+                <input class="form-control white_bg" value="<?= htmlentities($result['email']); ?>" name="email" id="email" type="email" required readonly>
               </div>
               <div class="form-group">
                 <label class="control-label">Telepon</label>
-                <input class="form-control white_bg" name="mobilenumber" value="<?php echo htmlentities($result['telp']); ?>" id="phone-number" type="number" min="0" required>
+                <input class="form-control white_bg" name="mobilenumber" value="<?= htmlentities($result['telp']); ?>" id="phone-number" type="number" min="0" required>
               </div>
               <div class="form-group">
                 <label class="control-label">Alamat</label>
-                <textarea class="form-control white_bg" name="address" rows="4"><?php echo htmlentities($result['alamat']); ?></textarea>
+                <textarea class="form-control white_bg" name="address" rows="4"><?= htmlentities($result['alamat']); ?></textarea>
               </div>
               <div class="form-group">
                 <label class="control-label">KTP</label><br />
-                <img src="<?= base_url('assets/'); ?>images/user/id/<?php echo htmlentities($result['ktp']); ?>" width="300" height="200" style="border:solid 1px #000"><br />
+                <img src="<?= base_url('assets/'); ?>images/user/id/<?= htmlentities($result['ktp']); ?>" width="300" height="200" style="border:solid 1px #000"><br />
                 <a href="gantiktp.php?">Ganti Gambar KTP</a>
               </div>
               <div class="form-group">
                 <label class="control-label">KK</label><br />
-                <img src="<?= base_url('assets/'); ?>images/user/id/<?php echo htmlentities($result['kk']); ?>" width="300" height="200" style="border:solid 1px #000"><br />
+                <img src="<?= base_url('assets/'); ?>images/user/id/<?= htmlentities($result['kk']); ?>" width="300" height="200" style="border:solid 1px #000"><br />
                 <a href="gantikk.php?">Ganti Gambar KK</a>
               </div>
             <?php } ?>

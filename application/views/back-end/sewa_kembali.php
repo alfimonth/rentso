@@ -89,7 +89,7 @@ include('includes/library.php');
 												<td><?= IndonesiaTgl(htmlentities($result['tgl_mulai'])); ?></td>
 												<td><?= IndonesiaTgl(htmlentities($result['tgl_selesai'])); ?></td>
 												<td><?= format_rupiah(htmlentities($total)); ?></td>
-												<td><a href="#myModal" data-toggle="modal" data-load-id="<?= $result['email']; ?>" data-remote-target="#myModal .modal-body"><?= $result['nama_user']; ?></a></td>
+												<td><a href="#myModal" data-toggle="modal" data-load-id="<?= $result['id_user']; ?>" data-remote-target="#myModal .modal-body"><?= $result['nama_user']; ?></a></td>
 												<td><?= htmlentities($result['status']); ?></td>
 												<td>
 													<a href="#myModal" data-toggle="modal" data-load-code="<?= $result['kode_booking']; ?>" data-remote-target="#myModal .modal-body"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;&nbsp;&nbsp;
@@ -140,7 +140,7 @@ include('includes/library.php');
 			var $this = $(this);
 			var code = $this.data('load-id');
 			if (code) {
-				$($this.data('remote-target')).load('userview.php?code=' + code);
+				$($this.data('remote-target')).load('<?= base_url('sewa/userview/'); ?>' + code);
 				app.code = code;
 
 			}

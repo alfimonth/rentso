@@ -30,4 +30,11 @@ class Admin extends CI_Controller
     {
         $this->load->view('back-end/laporan');
     }
+    public function logout()
+    {
+        $item = array('username');
+        $this->session->unset_userdata($item);
+        $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'success',title: 'Logout Berhasil', showConfirmButton: false,timer: 1500})</script>");
+        redirect(base_url('auth/login'));
+    }
 }

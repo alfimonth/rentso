@@ -67,7 +67,8 @@ class Auth extends CI_Controller
                 $this->session->set_flashdata('login', "<script>Swal.fire({icon: 'success',title: 'Login berhasil Berhasil', showConfirmButton: false,timer: 1500})</script>");
                 redirect(base_url('admin/'));
             } else {
-                $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'success',title: 'Username/Password Salah', showConfirmButton: false,timer: 1500})</script>");
+                $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'error',title: 'Username/Password Salah', showConfirmButton: false,timer: 1500})</script>");
+                redirect(base_url('auth/login'));
             }
         }
     }

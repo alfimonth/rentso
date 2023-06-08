@@ -18,7 +18,7 @@ function cek_admin()
             redirect(base_url('auth/login'));
         }
     } else {
-        if (current_url() !== base_url('admin')) {
+        if (current_url() == base_url('auth/login')) {
             redirect('admin');
         }
     }

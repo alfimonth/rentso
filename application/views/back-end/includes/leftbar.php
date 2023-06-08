@@ -16,11 +16,11 @@
 					<li><a href="<?= base_url('mobil'); ?>">Data Mobil</a></li>
 				</ul>
 			</li>
-			<li><a href="<?= base_url('mobil/drver'); ?>"><i class="fa fa-money"></i> Biaya Driver</a></li>
-			<li><a href="reg-users.php"><i class="fa fa-users"></i> User</a></li>
-			<li><a href="manage-conactusquery.php"><i class="fa fa-phone"></i> Menghubungi</a></li>
-			<li><a href="manage-pages.php"><i class="fa fa-gear"></i> Kelola Halaman</a></li>
-			<li><a href="update-contactinfo.php"><i class="fa fa-info"></i> Kontak Info</a></li>
-			<li><a href="laporan.php"><i class="fa fa-files-o"></i> Laporan</a></li>
+			<li><a href="<?= base_url('mobil/driver'); ?>"><i class="fa fa-money"></i> Biaya Driver</a></li>
+			<li><a href="<?= base_url('admin/user'); ?>"><i class="fa fa-users"></i> User</a></li>
+			<li><a href="<?= base_url('admin/menghubungi'); ?>"><i class="fa fa-phone"></i> Menghubungi</a></li>
+			<li><a href="<?= base_url('admin/page'); ?>"><i class="fa fa-gear"></i> Kelola Halaman</a></li>
+			<li><a href="<?= base_url('admin/kontak'); ?>"><i class="fa fa-info"></i> Kontak Info</a></li>
+			<li><a href="<?= base_url('admin/laporan'); ?>"><i class="fa fa-files-o"></i> Laporan</a></li>
 		</ul>
 	</nav>

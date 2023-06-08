@@ -1,13 +1,7 @@
 <?php
-session_start();
 error_reporting(0);
-include('includes/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
- ?>
+include('includes/config.php')
+?>
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -19,51 +13,38 @@ else{
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-	
-	<title>RentalMobil | Admin Kelola User</title>
 
-	<!-- Font awesome -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<!-- Sandstone Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Bootstrap Datatables -->
-	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
-	<!-- Bootstrap social button library -->
-	<link rel="stylesheet" href="css/bootstrap-social.css">
-	<!-- Bootstrap select -->
-	<link rel="stylesheet" href="css/bootstrap-select.css">
-	<!-- Bootstrap file input -->
-	<link rel="stylesheet" href="css/fileinput.min.css">
-	<!-- Awesome Bootstrap checkbox -->
-	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<!-- Admin Stye -->
-	<link rel="stylesheet" href="css/style.css">
-<style>
-.errorWrap {
-    padding: 10px;
-    margin: 0 0 20px 0;
-    background: #fff;
-    border-left: 4px solid #dd3d36;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
-.succWrap{
-    padding: 10px;
-    margin: 0 0 20px 0;
-    background: #fff;
-    border-left: 4px solid #5cb85c;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
-		</style>
+	<title>Manajemen User | Rentso. </title>
+
+	<?php include('includes/style.php') ?>
+
+	<style>
+		.errorWrap {
+			padding: 10px;
+			margin: 0 0 20px 0;
+			background: #fff;
+			border-left: 4px solid #dd3d36;
+			-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+			box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+		}
+
+		.succWrap {
+			padding: 10px;
+			margin: 0 0 20px 0;
+			background: #fff;
+			border-left: 4px solid #5cb85c;
+			-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+			box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+		}
+	</style>
 
 </head>
 
 <body>
-	<?php include('includes/header.php');?>
+	<?php include('includes/header.php'); ?>
 
 	<div class="ts-main-content">
-		<?php include('includes/leftbar.php');?>
+		<?php include('includes/leftbar.php'); ?>
 		<div class="content-wrapper">
 			<div class="container-fluid">
 
@@ -76,8 +57,7 @@ else{
 						<div class="panel panel-default">
 							<div class="panel-heading">Daftar User</div>
 							<div class="panel-body">
-							<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+								<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
@@ -92,49 +72,48 @@ else{
 										</tr>
 									</thead>
 									<tbody>
-									<?php
-									$no=0;
-									$sql = "SELECT * from  users ";
-									$query = mysqli_query($koneksidb,$sql);
-									while($result=mysqli_fetch_array($query))
-									{
-										$no++;
-									?>	
-										<tr>
-											<td><?php echo $no;?></td>
-											<td><?php echo htmlentities($result['nama_user']);?></td>
-											<td><?php echo htmlentities($result['email']);?></td>
-											<td><?php echo htmlentities($result['telp']);?></td>
-											<td><?php echo htmlentities($result['alamat']);?></td>
-											<td><a href="../image/id/<?php echo htmlentities($result['ktp']);?>" target="blank"><img src="../image/id/<?php echo htmlentities($result['ktp']);?>" width="40" height="30"></a></td>
-											<td><a href="../image/id/<?php echo htmlentities($result['kk']);?>" target="blank"><img src="../image/id/<?php echo htmlentities($result['kk']);?>" width="40" height="30"></a></td>
-											<td>
-												<a href="#myModal" data-toggle="modal" data-load-code="<?php echo $result['email']; ?>" data-remote-target="#myModal .modal-body"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;&nbsp;&nbsp;
-												<a href="userdel.php?email=<?= $result['email'];?>" onclick="return confirm('Apakah anda yakin akan mereset password untuk email <?php echo $result['email'];?>?');"><i class="fa fa-refresh"></i></a>
-											</td>
-										</tr>
+										<?php
+										$no = 0;
+										$sql = "SELECT * from  users ";
+										$query = mysqli_query($koneksidb, $sql);
+										while ($result = mysqli_fetch_array($query)) {
+											$no++;
+										?>
+											<tr>
+												<td><?php echo $no; ?></td>
+												<td><?php echo htmlentities($result['nama_user']); ?></td>
+												<td><?php echo htmlentities($result['email']); ?></td>
+												<td><?php echo htmlentities($result['telp']); ?></td>
+												<td><?php echo htmlentities($result['alamat']); ?></td>
+												<td><a href="../image/id/<?php echo htmlentities($result['ktp']); ?>" target="blank"><img src="../image/id/<?php echo htmlentities($result['ktp']); ?>" width="40" height="30"></a></td>
+												<td><a href="../image/id/<?php echo htmlentities($result['kk']); ?>" target="blank"><img src="../image/id/<?php echo htmlentities($result['kk']); ?>" width="40" height="30"></a></td>
+												<td>
+													<a href="#myModal" data-toggle="modal" data-load-code="<?php echo $result['email']; ?>" data-remote-target="#myModal .modal-body"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;&nbsp;&nbsp;
+													<a href="userdel.php?email=<?= $result['email']; ?>" onclick="return confirm('Apakah anda yakin akan mereset password untuk email <?php echo $result['email']; ?>?');"><i class="fa fa-refresh"></i></a>
+												</td>
+											</tr>
 										<?php } ?>
-										
+
 									</tbody>
 								</table>
-	<!-- Large modal -->
-	<div class="modal fade bs-example-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-body">
-					<p>One fine body…</p>
-				</div>
-			</div>
-		</div>
-	</div>    
-	<!-- Large modal --> 
+								<!-- Large modal -->
+								<div class="modal fade bs-example-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-body">
+												<p>One fine body…</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Large modal -->
 
-						
+
 
 							</div>
 						</div>
 
-					
+
 
 					</div>
 				</div>
@@ -144,31 +123,24 @@ else{
 	</div>
 
 	<!-- Loading Scripts -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap-select.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.dataTables.min.js"></script>
-	<script src="js/dataTables.bootstrap.min.js"></script>
-	<script src="js/Chart.min.js"></script>
-	<script src="js/fileinput.js"></script>
-	<script src="js/chartData.js"></script>
-	<script src="js/main.js"></script>
-    <script>
+	<?php include('includes/script.php') ?>
+
+	<script>
 		var app = {
 			code: '0'
 		};
-		$('[data-load-code]').on('click',function(e) {
-					e.preventDefault();
-					var $this = $(this);
-					var code = $this.data('load-code');
-					if(code) {
-						$($this.data('remote-target')).load('userview.php?code='+code);
-						app.code = code;
-						
-					}
+		$('[data-load-code]').on('click', function(e) {
+			e.preventDefault();
+			var $this = $(this);
+			var code = $this.data('load-code');
+			if (code) {
+				$($this.data('remote-target')).load('userview.php?code=' + code);
+				app.code = code;
+
+			}
 		});
-    </script>
+	</script>
 
 </body>
+
 </html>
-<?php } ?>

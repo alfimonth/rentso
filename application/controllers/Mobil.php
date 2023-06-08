@@ -13,4 +13,8 @@ class Mobil extends CI_Controller
     {
         $this->load->view('back-end/merek');
     }
+    public function driver()
+    {
+        $this->load->view('back-end/driver');
+    }
 }

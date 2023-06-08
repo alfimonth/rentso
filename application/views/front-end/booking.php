@@ -48,13 +48,21 @@ include('templates/format_rupiah.php');
 					<form method="post" name="sewa" action="<?= base_url('kendaraan/booking/') . $id; ?>">
 						<input type="hidden" class="form-control" name="vid" value="<?= $id; ?>" required>
 						<div class="form-group">
+							<?php $fromv = (set_value('fromdate') === '') ? date('Y-m-d', strtotime('+1 day')) : set_value('fromdate'); ?>
 							<label>Tanggal Mulai</label>
-							<input type="date" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)" value="<?= set_value('fromdate') ?>" required>
+							<input type="date" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)" value="<?= $fromv ?>" required>
 							<input type="hidden" name="now" class="form-control" value="<?= $now; ?>">
 						</div>
 						<div class="form-group">
+							<?php
+							if (set_value('todate') === '') {
+								$tov = date('Y-m-d', strtotime('+1 day'));
+							} else {
+								$tov = set_value('todate');
+							}
+							?>
 							<label>Tanggal Selesai</label>
-							<input type="date" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)" value="<?= set_value('todate') ?>" required>
+							<input type="date" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)" value="<?= $tov ?>" required>
 						</div>
 						<div class=" form-group">
 							<label>Jumlah unit</label><br />

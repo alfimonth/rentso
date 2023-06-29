@@ -40,4 +40,29 @@ class ModelUser extends CI_Model
         $this->db->limit(10, 0);
         return $this->db->get();
     }
+    public function getFeed()
+    {
+        $this->db->select('*');
+        $this->db->from('contactus');
+        $this->db->order_by('tgl_posting', 'DESC');
+        return $this->db->get();
+    }
+    public function getFeedbyId($id)
+    {
+        $this->db->select('*');
+        $this->db->from('contactus');
+        $this->db->where('id_cu', $id);
+        return $this->db->get();
+    }
+    public function readFeed($id)
+    {
+        $this->db->set('status', 1);
+        $this->db->where('id_cu', $id);
+        $this->db->update('contactus');
+    }
+    public function deleteFeed($id)
+    {
+        $this->db->where('id_cu', $id);
+        $this->db->delete('contactus');
+    }
 }

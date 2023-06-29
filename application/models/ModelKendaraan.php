@@ -16,7 +16,7 @@ class ModelKendaraan extends CI_Model
     {
         $this->db->from('kendaraan');
         $this->db->join('merek', 'kendaraan.id_merek = merek.id_merek');
-        $this->db->order_by("id_mobil", "DSC");
+        $this->db->order_by("id_mobil", "DESC");
         $this->db->limit($limit);
         return $this->db->get();
     }

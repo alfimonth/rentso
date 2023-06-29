@@ -23,7 +23,24 @@ class Admin extends CI_Controller
     }
     public function menghubungi()
     {
-        $this->load->view('back-end/manage-conactusquery');
+        $data['feeds'] = $this->ModelUser->getFeed()->result_array();
+        $this->load->view('back-end/manage-conactusquery', $data);
+    }
+    public function feed($id)
+    {
+        $data['feed'] = $this->ModelUser->getFeedbyId($id)->row_array();
+        $this->load->view('back-end/userfeed', $data);
+    }
+    public function feedclose($id)
+    {
+        $this->ModelUser->readFeed($id);
+        redirect('admin/menghubungi');
+    }
+    public function feeddel($id)
+    {
+        $this->ModelUser->deleteFeed($id);
+        $this->session->set_flashdata('hapus', "<script>Swal.fire({icon: 'success',title: 'Hapus feedback berhasil', showConfirmButton: false,timer: 1500})</script>");
+        redirect('admin/menghubungi');
     }
     public function page()
     {

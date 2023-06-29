@@ -18,7 +18,7 @@
 			</li>
 			<li><a href="<?= base_url('mobil/driver'); ?>"><i class="fa fa-money"></i> Biaya Driver</a></li>
 			<li><a href="<?= base_url('admin/user'); ?>"><i class="fa fa-users"></i> User</a></li>
-			<li><a href="<?= base_url('admin/menghubungi'); ?>"><i class="fa fa-phone"></i> Menghubungi</a></li>
+			<li><a href="<?= base_url('admin/menghubungi'); ?>"><i class="fa fa-phone"></i> Feedback</a></li>
 			<li><a href="<?= base_url('admin/page'); ?>"><i class="fa fa-gear"></i> Kelola Halaman</a></li>
 			<li><a href="<?= base_url('admin/kontak'); ?>"><i class="fa fa-info"></i> Kontak Info</a></li>
 			<li><a href="<?= base_url('admin/laporan'); ?>"><i class="fa fa-files-o"></i> Laporan</a></li>

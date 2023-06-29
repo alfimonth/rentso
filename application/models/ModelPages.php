@@ -5,4 +5,11 @@ class ModelPages extends CI_Model
     {
         return $this->db->query("SELECT detail FROM tblpages WHERE id=0 ");
     }
+    public function alamat()
+    {
+        $this->db->select('alamat_kami');
+        $this->db->from('contactusinfo');
+        return $this->db->get();
+    }
+
 }

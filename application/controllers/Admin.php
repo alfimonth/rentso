@@ -54,6 +54,12 @@ class Admin extends CI_Controller
     {
         $this->load->view('back-end/laporan');
     }
+    public function cetaklaporan()
+    {
+        $data['mulai'] = $this->input->post('mulai', true);
+        $data['selesai'] = $this->input->post('selesai', true);
+        $this->load->view('back-end/laporan_cetak', $data);
+    }
     public function logout()
     {
         $item = array('username');

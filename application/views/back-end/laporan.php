@@ -85,14 +85,14 @@ include('includes/library.php');
 					$mulai 	 = $_GET['awal'];
 					$selesai = $_GET['akhir'];
 					$stt	 = "Sudah Dibayar";
-					$sqlsewa = "SELECT booking.*,mobil.*,merek.*,users.* FROM booking,mobil,merek,users WHERE booking.id_mobil=mobil.id_mobil
-											AND merek.id_merek=mobil.id_merek AND users.email=booking.email AND booking.status='$stt' 
+					$sqlsewa = "SELECT booking.*,kendaraan.*,merek.*,users.* FROM booking,kendaraan,merek,users WHERE booking.id_mobil=kendaraan.id_mobil
+											AND merek.id_merek=kendaraan.id_merek AND users.email=booking.email AND booking.status='$stt' 
 											AND booking.tgl_booking BETWEEN '$mulai' AND '$selesai'";
 					$querysewa = mysqli_query($koneksidb, $sqlsewa);
 				?>
 					<!-- Zero Configuration Table -->
 					<div class="panel panel-default">
-						<div class="panel-heading">Laporan Sewa Tanggal <?php echo IndonesiaTgl($mulai); ?> sampai <?php echo IndonesiaTgl($selesai); ?></div>
+						<div class="panel-heading">Laporan Sewa Tanggal <?= IndonesiaTgl($mulai); ?> sampai <?= IndonesiaTgl($selesai); ?></div>
 						<div class="panel-body">
 							<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 								<thead>
@@ -111,10 +111,10 @@ include('includes/library.php');
 										$no++;
 									?>
 										<tr>
-											<td><?php echo $no; ?></td>
-											<td><?php echo htmlentities($result['kode_booking']); ?></td>
-											<td><?php echo IndonesiaTgl(htmlentities($result['tgl_booking'])); ?></td>
-											<td><?php echo format_rupiah($total); ?></td>
+											<td><?= $no; ?></td>
+											<td><?= htmlentities($result['kode_booking']); ?></td>
+											<td><?= IndonesiaTgl(htmlentities($result['tgl_booking'])); ?></td>
+											<td><?= format_rupiah($total); ?></td>
 										</tr>
 									<?php }
 									?>
@@ -124,9 +124,13 @@ include('includes/library.php');
 
 						</div>
 					</div>
-					<div class="form-group">
-						<a href="laporan_cetak.php?awal=<?php echo $mulai; ?>&akhir=<?php echo $selesai; ?>" target="_blank" class="btn btn-primary">Cetak</a>
-					</div>
+					<form action="<?= base_url('admin/cetaklaporan') ?>" method="POST" name="cetak">
+						<input type="hidden" name="mulai" value="<?= $mulai; ?>">
+						<input type="hidden" name="selesai" value="<?= $selesai; ?>">
+						<div class="form-group">
+							<button type="submit" target="_blank" class="btn btn-primary">Cetak</button>
+						</div>
+					</form>
 				<?php } ?>
 
 
@@ -139,21 +143,6 @@ include('includes/library.php');
 
 	<!-- Loading Scripts -->
 	<?php include('includes/script.php') ?>
-	<script>
-		var app = {
-			code: '0'
-		};
-		$('[data-load-code]').on('click', function(e) {
-			e.preventDefault();
-			var $this = $(this);
-			var code = $this.data('load-code');
-			if (code) {
-				$($this.data('remote-target')).load('userview.php?code=' + code);
-				app.code = code;
-
-			}
-		});
-	</script>
 
 </body>
 

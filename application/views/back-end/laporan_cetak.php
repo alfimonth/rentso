@@ -2,17 +2,18 @@
 include('includes/config.php');
 include('includes/format_rupiah.php');
 include('includes/library.php');
-$awal=$_GET['awal'];
-$akhir=$_GET['akhir'];
+$awal = $mulai;
+$akhir = $selesai;
 $stt	 = "Sudah Dibayar";
-$sqlsewa = "SELECT booking.*,mobil.*,merek.*,users.* FROM booking,mobil,merek,users WHERE booking.id_mobil=mobil.id_mobil
-			AND merek.id_merek=mobil.id_merek AND users.email=booking.email AND booking.status='$stt' 
+$sqlsewa = "SELECT booking.*,kendaraan.*,merek.*,users.* FROM booking,kendaraan,merek,users WHERE booking.id_mobil=kendaraan.id_mobil
+			AND merek.id_merek=kendaraan.id_merek AND users.email=booking.email AND booking.status='$stt' 
 			AND booking.tgl_booking BETWEEN '$awal' AND '$akhir'";
-$querysewa = mysqli_query($koneksidb,$sqlsewa);
+$querysewa = mysqli_query($koneksidb, $sqlsewa);
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +34,7 @@ $querysewa = mysqli_query($koneksidb,$sqlsewa);
 
 	<!-- Custom Fonts -->
 	<link href="../assets/new/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
+
 	<!-- jQuery -->
 	<script src="../assets/new/jquery.min.js"></script>
 
@@ -54,14 +55,19 @@ $querysewa = mysqli_query($koneksidb,$sqlsewa);
 						<td rowspan="3" width="16%" class="text-center">
 							<img src="../assets/images/cat-profile.png" alt="logo" width="80" />
 						</td>
-						<td class="text-center"><h3>Rental Mobil</h3></td>
+						<td class="text-center">
+							[xgsdfgs-ahsdjhsad-adshasjh]
+						</td>
 						<td rowspan="3" width="16%">&nbsp;</td>
 					</tr>
 					<tr>
-						<td class="text-center"><h2>Rental Mobil</h2></td>
+						<td class="text-center">
+							<h3>Laporan Keuangan Rentso.</h3>
+							<h2></h2>
+						</td>
 					</tr>
 					<tr>
-						<td class="text-center">Jl. Kemanggisan Raya No.19, RT.4/RW.13, Kemanggisan, Kec. Palmerah, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11480</td>
+						<td class="text-center"><?= $this->ModelPages->alamat()->row_array()["alamat_kami"] ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -72,8 +78,8 @@ $querysewa = mysqli_query($koneksidb,$sqlsewa);
 	<section id="body-of-report">
 		<div class="container-fluid">
 			<h4 class="text-center">Detail Laporan</h4>
-			<h5 class="text-center">Tanggal <?php echo IndonesiaTgl($awal) ." s/d ". IndonesiaTgl($akhir); ?></h5>
-			<br/>
+			<h5 class="text-center">Tanggal <?= IndonesiaTgl($awal) . " s/d " . IndonesiaTgl($akhir); ?></h5>
+			<br />
 			<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 				<thead>
 					<tr>
@@ -84,30 +90,30 @@ $querysewa = mysqli_query($koneksidb,$sqlsewa);
 					</tr>
 				</thead>
 				<tbody>
-				<?php
-					$no=0;
-					$pemasukan=0;
-					while($result = mysqli_fetch_array($querysewa)) {
-						$biayamobil=$result['durasi']*$result['harga'];
-						$total=$result['driver']+$biayamobil;
-						$pemasukan += $total; 
+					<?php
+					$no = 0;
+					$pemasukan = 0;
+					while ($result = mysqli_fetch_array($querysewa)) {
+						$biayamobil = $result['durasi'] * $result['harga'];
+						$total = $result['driver'] + $biayamobil;
+						$pemasukan += $total;
 						$no++;
-				?>	
-					<tr align="center">
-						<td><?php echo $no;?></td>
-						<td><?php echo htmlentities($result['kode_booking']);?></td>
-						<td><?php echo IndonesiaTgl(htmlentities($result['tgl_booking']));?></td>
-						<td><?php echo format_rupiah($total);?></td>
-					</tr>
-				<?php } ?>					
+					?>
+						<tr align="center">
+							<td><?= $no; ?></td>
+							<td><?= htmlentities($result['kode_booking']); ?></td>
+							<td><?= IndonesiaTgl(htmlentities($result['tgl_booking'])); ?></td>
+							<td><?= format_rupiah($total); ?></td>
+						</tr>
+					<?php } ?>
 				</tbody>
 				<tfoot>
-				<?php
+					<?php
 					echo '<tr>';
 					echo '<th colspan="3" class="text-center">Total Pemasukan</th>';
-					echo '<th class="text-center">'. format_rupiah($pemasukan) .'</th>';
+					echo '<th class="text-center">' . format_rupiah($pemasukan) . '</th>';
 					echo '</tr>';
-				?>
+					?>
 				</tfoot>
 			</table>
 
@@ -118,9 +124,9 @@ $querysewa = mysqli_query($koneksidb,$sqlsewa);
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#jumlah').terbilang({
-				'style'			: 3, 
-				'output_div' 	: "jumlah2",
-				'akhiran'		: "Rupiah",
+				'style': 3,
+				'output_div': "jumlah2",
+				'akhiran': "Rupiah",
 			});
 
 			window.print();
@@ -133,4 +139,5 @@ $querysewa = mysqli_query($koneksidb,$sqlsewa);
 	<script src="../assets/new/jTerbilang.js"></script>
 
 </body>
+
 </html>

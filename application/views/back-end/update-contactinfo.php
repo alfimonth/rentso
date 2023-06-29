@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 									<div class="panel-body">
 										<form method="post" name="chngpwd" class="form-horizontal" onSubmit="return valid();">
 
-											<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
+											<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?= htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?= htmlentities($msg); ?> </div><?php } ?>
 											<?php
 											$sql = "SELECT * from contactusinfo ";
 											$query = mysqli_query($koneksidb, $sql);
@@ -71,19 +71,19 @@ if (isset($_POST['submit'])) {
 												<div class="form-group">
 													<label class="col-sm-4 control-label">Alamat</label>
 													<div class="col-sm-8">
-														<textarea class="form-control" name="address" id="address" required><?php echo htmlentities($result['alamat_kami']); ?></textarea>
+														<textarea class="form-control" name="address" id="address" required><?= htmlentities($result['alamat_kami']); ?></textarea>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-4 control-label"> Email</label>
 													<div class="col-sm-8">
-														<input type="email" class="form-control" name="email" id="email" value="<?php echo htmlentities($result['email_kami']); ?>" required>
+														<input type="email" class="form-control" name="email" id="email" value="<?= htmlentities($result['email_kami']); ?>" required>
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-4 control-label"> Telepon </label>
 													<div class="col-sm-8">
-														<input type="number" class="form-control" value="<?php echo htmlentities($result['telp_kami']); ?>" name="contactno" id="contactno" required>
+														<input type="number" class="form-control" value="<?= htmlentities($result['telp_kami']); ?>" name="contactno" id="contactno" required>
 													</div>
 												</div>
 											<?php } ?>

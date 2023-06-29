@@ -57,7 +57,7 @@ include('includes/config.php')
 						<div class="panel panel-default">
 							<div class="panel-heading">Daftar User</div>
 							<div class="panel-body">
-								<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
+								<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?= htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?= htmlentities($msg); ?> </div><?php } ?>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
@@ -80,16 +80,16 @@ include('includes/config.php')
 											$no++;
 										?>
 											<tr>
-												<td><?php echo $no; ?></td>
-												<td><?php echo htmlentities($result['nama_user']); ?></td>
-												<td><?php echo htmlentities($result['email']); ?></td>
-												<td><?php echo htmlentities($result['telp']); ?></td>
-												<td><?php echo htmlentities($result['alamat']); ?></td>
-												<td><a href="../image/id/<?php echo htmlentities($result['ktp']); ?>" target="blank"><img src="../image/id/<?php echo htmlentities($result['ktp']); ?>" width="40" height="30"></a></td>
-												<td><a href="../image/id/<?php echo htmlentities($result['kk']); ?>" target="blank"><img src="../image/id/<?php echo htmlentities($result['kk']); ?>" width="40" height="30"></a></td>
+												<td><?= $no; ?></td>
+												<td><?= htmlentities($result['nama_user']); ?></td>
+												<td><?= htmlentities($result['email']); ?></td>
+												<td><?= htmlentities($result['telp']); ?></td>
+												<td><?= htmlentities($result['alamat']); ?></td>
+												<td><a href="<?= base_url('assets/'); ?>images/user/id/<?= htmlentities($result['ktp']); ?>" target="blank"><img src="<?= base_url('assets/'); ?>images/user/id/<?= htmlentities($result['ktp']); ?>" width="40" height="30"></a></td>
+												<td><a href="<?= base_url('assets/'); ?>images/user/id/<?= htmlentities($result['kk']); ?>" target="blank"><img src="<?= base_url('assets/'); ?>images/user/id/<?= htmlentities($result['kk']); ?>" width="40" height="30"></a></td>
 												<td>
-													<a href="#myModal" data-toggle="modal" data-load-code="<?php echo $result['email']; ?>" data-remote-target="#myModal .modal-body"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;&nbsp;&nbsp;
-													<a href="userdel.php?email=<?= $result['email']; ?>" onclick="return confirm('Apakah anda yakin akan mereset password untuk email <?php echo $result['email']; ?>?');"><i class="fa fa-refresh"></i></a>
+													<a href="#myModal" data-toggle="modal" data-load-code="<?= $result['id_user']; ?>" data-remote-target="#myModal .modal-body"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;&nbsp;&nbsp;
+													<a id="reset" data-load-id="<?= $result['id_user']; ?>" data-load-nama="<?= $result['nama_user']; ?>"><i class="fa fa-refresh"></i></a>
 												</td>
 											</tr>
 										<?php } ?>
@@ -134,12 +134,28 @@ include('includes/config.php')
 			var $this = $(this);
 			var code = $this.data('load-code');
 			if (code) {
-				$($this.data('remote-target')).load('userview.php?code=' + code);
+				$($this.data('remote-target')).load('<?= base_url('sewa/userview/'); ?>' + code);
 				app.code = code;
 
 			}
 		});
+
+		$('[data-load-id]').on("click", function() {
+			var $this = $(this);
+			var id = $this.data('load-id');
+			var nama = $this.data('load-nama');
+			Swal.fire({
+				icon: 'warning',
+				title: 'Yakin mereset password ' + nama + '?',
+				showCancelButton: true,
+			}).then((result) => {
+				if (result.value === true) {
+					document.location = '<?= base_url('/admin/userreset/'); ?>' + id;
+				}
+			})
+		})
 	</script>
+	<?= $this->session->flashdata('up-pass'); ?>
 
 </body>
 

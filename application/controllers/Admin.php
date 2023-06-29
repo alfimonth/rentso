@@ -14,6 +14,13 @@ class Admin extends CI_Controller
     {
         $this->load->view('back-end/reg-users');
     }
+    public function userreset($id)
+    {
+        $newpass = password_hash('password', PASSWORD_DEFAULT);
+        $this->ModelUser->updatePasswordbyId($newpass, $id);
+        $this->session->set_flashdata('up-pass', "<script>Swal.fire({icon: 'success',title: 'Password berhasil direset', showConfirmButton: false,timer: 1500})</script>");
+        redirect('admin/user');
+    }
     public function menghubungi()
     {
         $this->load->view('back-end/manage-conactusquery');

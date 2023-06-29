@@ -11,6 +11,12 @@ class ModelUser extends CI_Model
         $this->db->where('email', $email);
         $this->db->update('users');
     }
+    public function updatePasswordbyId($pass, $id)
+    {
+        $this->db->set('password', $pass);
+        $this->db->where('id_user', $id);
+        $this->db->update('users');
+    }
     public function cekData($where = null)
     {
         // var_dump('a');die;

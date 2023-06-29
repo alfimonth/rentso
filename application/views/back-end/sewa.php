@@ -128,7 +128,7 @@ include('includes/library.php');
       var $this = $(this);
       var code = $this.data('load-code');
       if (code) {
-        $($this.data('remote-target')).load('sewaview.php?code=' + code);
+        $($this.data('remote-target')).load('<?= base_url('sewa/view/'); ?>' + code);
         app.code = code;
 
       }

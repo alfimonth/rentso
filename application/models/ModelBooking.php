@@ -24,4 +24,9 @@ class ModelBooking extends CI_Model
         return $this->db->query("SELECT booking.*,kendaraan.*,merek.*,users.* FROM booking,kendaraan,merek,users WHERE booking.id_mobil=kendaraan.id_mobil
         AND merek.id_merek=kendaraan.id_merek AND users.email=booking.email ORDER BY booking.kode_booking DESC");
     }
+    public function getBookingStatus($status)
+    {
+        return $this->db->query("SELECT booking.*,kendaraan.*,merek.*,users.* FROM booking,kendaraan,merek,users WHERE booking.id_mobil=kendaraan.id_mobil
+        AND merek.id_merek=kendaraan.id_merek AND users.email=booking.email AND booking.status='$status' ORDER BY booking.kode_booking DESC");
+    }
 }

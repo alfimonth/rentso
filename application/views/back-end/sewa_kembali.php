@@ -65,9 +65,6 @@ include('includes/library.php');
 											<th>No</th>
 											<th>Kode Sewa</th>
 											<th>Mobil</th>
-											<th>Tgl. Mulai</th>
-											<th>Tgl. Selesai</th>
-											<th>Total</th>
 											<th>Penyewa</th>
 											<th>Status</th>
 											<th>Aksi</th>
@@ -85,15 +82,12 @@ include('includes/library.php');
 											<tr align="center">
 												<td><?= $i; ?></td>
 												<td><?= htmlentities($result['kode_booking']); ?></td>
-												<td><?= htmlentities($result['nama_mobil']); ?></td>
-												<td><?= IndonesiaTgl(htmlentities($result['tgl_mulai'])); ?></td>
-												<td><?= IndonesiaTgl(htmlentities($result['tgl_selesai'])); ?></td>
-												<td><?= format_rupiah(htmlentities($total)); ?></td>
+												<td><?= htmlentities($result['nama_merek'] . ' ' . $result['nama_mobil']); ?></td>
 												<td><a href="#myModal" data-toggle="modal" data-load-id="<?= $result['id_user']; ?>" data-remote-target="#myModal .modal-body"><?= $result['nama_user']; ?></a></td>
 												<td><?= htmlentities($result['status']); ?></td>
 												<td>
 													<a href="#myModal" data-toggle="modal" data-load-code="<?= $result['kode_booking']; ?>" data-remote-target="#myModal .modal-body"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;&nbsp;&nbsp;
-													<a href="sewaeditkembali.php?id=<?= $result['kode_booking']; ?>"><i class="fa fa-edit"></i></a>
+													<a href="<?= base_url('sewa/editkembali/') . $result['kode_booking']; ?>"><i class="fa fa-edit"></i></a>
 												</td>
 											</tr>
 										<?php endforeach; ?>
@@ -121,6 +115,7 @@ include('includes/library.php');
 
 	<!-- Loading Scripts -->
 	<?php include('includes/script.php') ?>
+	<?= $this->session->flashdata('sewa'); ?>
 	<script>
 		var app = {
 			code: '0'
@@ -130,7 +125,7 @@ include('includes/library.php');
 			var $this = $(this);
 			var code = $this.data('load-code');
 			if (code) {
-				$($this.data('remote-target')).load('sewaview.php?code=' + code);
+				$($this.data('remote-target')).load('<?= base_url('sewa/view/'); ?>' + code);
 				app.code = code;
 
 			}

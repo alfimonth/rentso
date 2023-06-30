@@ -121,4 +121,19 @@ class ModelKendaraan extends CI_Model
         BrakeAssist='$brakeassist',PowerSteering='$powersteering',DriverAirbag='$driverairbag',PassengerAirbag='$passengerairbag',PowerWindows='$powerwindow',
         CDPlayer='$cdplayer',CentralLocking='$centrallocking',CrashSensor='$crashcensor',LeatherSeats='$leatherseats' where id_mobil='$id'");
     }
+    public function addUnit(
+        $nopol,
+        $id,
+        $warna,
+    ) {
+        $this->db->db_debug = false;
+        $this->db->query("INSERT INTO unit (nopol,id_kendaraan,warna)
+        VALUES ('$nopol','$id','$warna')");
+        return $this->db->affected_rows();
+    }
+    public function dropUnit($id)
+    {
+        $this->db->query("DELETE FROM unit WHERE nopol='$id'");
+        return $this->db->affected_rows();
+    }
 }

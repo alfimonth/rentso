@@ -329,4 +329,53 @@ class Mobil extends CI_Controller
             redirect(base_url('mobil/ubah/') . $id);
         }
     }
+
+    public function unit($code)
+    {
+        $this->form_validation->set_rules(
+            'nopol',
+            'nopol',
+            'required|trim',
+            [
+                'required' => 'nopol tidak Boleh Kosong',
+            ]
+        );
+        if ($this->form_validation->run() == false) {
+            $data['kendaraan'] = $this->ModelKendaraan->getOne(['id_mobil' => $code])->row_array();
+            $this->load->view('back-end/unit', $data);
+        } else {
+            $unit = $this->input->post(null, true);
+            $stat = $this->ModelKendaraan->addUnit($unit['nopol'], $code, $unit['warna']);
+            if ($stat < 1) {
+                $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'error',title: 'Unit sudah ada', showConfirmButton: false,timer: 1500})</script>");
+            } else {
+                $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'success',title: 'Tambah unit berhasil', showConfirmButton: false,timer: 1500})</script>");
+            }
+            redirect(base_url('mobil'));
+        }
+    }
+    public function dropunit($code)
+    {
+        $this->form_validation->set_rules(
+            'nopol',
+            'nopol',
+            'required|trim',
+            [
+                'required' => 'nopol tidak Boleh Kosong',
+            ]
+        );
+        if ($this->form_validation->run() == false) {
+            $data['kendaraan'] = $this->ModelKendaraan->getOne(['id_mobil' => $code])->row_array();
+            $this->load->view('back-end/dropunit', $data);
+        } else {
+            $unit = $this->input->post(null, true);
+            $stat = $this->ModelKendaraan->dropUnit($unit['nopol']);
+            if ($stat < 1) {
+                $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'error',title: 'Hapus unit gagal', showConfirmButton: false,timer: 1500})</script>");
+            } else {
+                $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'success',title: 'Unit berkurang', showConfirmButton: false,timer: 1500})</script>");
+            }
+            redirect(base_url('mobil'));
+        }
+    }
 }

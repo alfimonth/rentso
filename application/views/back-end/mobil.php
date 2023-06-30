@@ -58,16 +58,17 @@ include('includes/library.php');
 						<!-- Zero Configuration Table -->
 						<div class="panel panel-default">
 							<div class="panel-heading">Daftar Mobil</div>
-							<div class="panel-body">
+							<div class="panel-body" style="overflow-x: scroll;">
 								<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?= htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?= htmlentities($msg); ?> </div><?php } ?>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
-											<th>No</th>
-											<th>Nama Mobil</th>
-											<th>Harga /Hari</th>
-											<th>Tahun</th>
-											<th>Action</th>
+											<th style="width: 10px"> No</th>
+											<th class="text-center">Nama Mobil</th>
+											<th class="text-center">Tahun</th>
+											<th class="text-center">Jumlah Unit</th>
+											<th class="text-center"> Harga Sewa/Hari</th>
+											<th class="text-center">Action</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -77,22 +78,47 @@ include('includes/library.php');
 										$querymobil = mysqli_query($koneksidb, $sqlmobil);
 										while ($result = mysqli_fetch_array($querymobil)) {
 											$nomor++;
+											$unit = $this->ModelKendaraan->countUnit(['id_kendaraan' => $result['id_mobil']]);
+
 										?>
 											<tr>
-												<td><?= htmlentities($nomor); ?></td>
+												<td class="text-center"><?= htmlentities($nomor); ?></td>
 												<td><?= htmlentities($result['nama_merek'] . ' ' . $result['nama_mobil']); ?></td>
 
-												<td><?= format_rupiah($result['harga']); ?></td>
-												<td><?= htmlentities($result['tahun']); ?></td>
+
+												<td class="text-center"><?= htmlentities($result['tahun']); ?></td>
+
+												<td class="text-center">
+													<a href="#myModal" data-toggle="modal" data-load-code="<?= $result['id_mobil']; ?>" data-remote-target="#myModal .modal-body"><i class=" fa fa-plus"></i></a>&nbsp;&nbsp;
+													<?= $unit ?>&nbsp;&nbsp;
+
+													<?php if ($unit > 0) : ?>
+														<a href="#myModal" data-toggle="modal" data-load-drop="<?= $result['id_mobil']; ?>" data-remote-target="#myModal .modal-body"><i class=" fa fa-minus"></i></a>
+													<?php else : ?>
+														<a><i class=" fa fa-minus" style="color: gray;"></i></a>
+													<?php endif ?>
+
+												</td>
+												<td class="text-right"> <?= format_rupiah($result['harga']); ?></td>
 												<td class="text-center">
 													<a href="<?= base_url('mobil/ubah/') . $result['id_mobil']; ?>"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
-													<a href="mobiledit.php?id=<?= $result['id_mobil']; ?>"><i class="fa fa-plus"></i></a>&nbsp;&nbsp;
 													<a data-load-id="<?= $result['id_mobil']; ?>" data-load-nama="<?= $result['nama_merek'] . ' ' . $result['nama_mobil']; ?>"><i class="fa fa-close"></i></a>
 												</td>
 											</tr>
 										<?php } ?>
 									</tbody>
 								</table>
+								<!-- Large modal -->
+								<div class="modal fade bs-example-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-body">
+												<p>One fine body…</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Large modal -->
 							</div>
 						</div>
 					</div>
@@ -104,6 +130,27 @@ include('includes/library.php');
 	<!-- Loading Scripts -->
 	<?php include('includes/script.php'); ?>
 	<script>
+		var app = {
+			code: '0'
+		};
+		$('[data-load-code]').on('click', function(e) {
+			e.preventDefault();
+			var $this = $(this);
+			var code = $this.data('load-code');
+			if (code) {
+				$($this.data('remote-target')).load('<?= base_url('mobil/unit/'); ?>' + code);
+				app.code = code;
+			}
+		});
+		$('[data-load-drop]').on('click', function(e) {
+			e.preventDefault();
+			var $this = $(this);
+			var code = $this.data('load-drop');
+			if (code) {
+				$($this.data('remote-target')).load('<?= base_url('mobil/dropunit/'); ?>' + code);
+				app.code = code;
+			}
+		});
 		$('[data-load-id]').on("click", function() {
 			var $this = $(this);
 			var id = $this.data('load-id');

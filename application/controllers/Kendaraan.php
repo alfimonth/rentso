@@ -28,9 +28,13 @@ class Kendaraan extends CI_Controller
             $data['user'] = 'Guest';
         }
         $data['vehicle'] = $this->ModelKendaraan->getOne(['id_mobil' => $id])->row_array();
-        $merek = $data['vehicle']["id_merek"];
-        $data['sejenis'] = $this->ModelKendaraan->getBrand(["kendaraan.id_merek" => $merek])->result_array();
-        $this->load->view('front-end/detail', $data);
+        if ($data['vehicle'] === null) {
+            redirect(base_url('404'));
+        } else {
+            $merek = $data['vehicle']["id_merek"];
+            $data['sejenis'] = $this->ModelKendaraan->getBrand(["kendaraan.id_merek" => $merek])->result_array();
+            $this->load->view('front-end/detail', $data);
+        }
     }
     public function booking($id)
     {

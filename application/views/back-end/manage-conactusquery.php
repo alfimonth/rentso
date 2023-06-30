@@ -13,7 +13,7 @@ error_reporting(0);
   <meta name="author" content="">
   <meta name="theme-color" content="#3e454c">
 
-  <title>Rental Mobil | Admin Manage Queries </title>
+  <title>Feedback | Rentso. </title>
 
   <!-- Font awesome -->
   <?php include('includes/style.php') ?>
@@ -65,7 +65,7 @@ error_reporting(0);
                       <th>Telp</th>
                       <th>Status</th>
                       <!-- <th>Tgl. Posting</th> -->
-                      <th>Action</th>
+                      <th class="text-center">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -79,7 +79,7 @@ error_reporting(0);
                         <!-- <td><?= htmlentities($feed['pesan']); ?></td>
 												<td><?= htmlentities($feed['tgl_posting']); ?></td> -->
                         <td><?= ($feed['status'] === '1') ? 'Sudah Dibaca' : 'Belum Dibaca' ?></td>
-                        <td>
+                        <td class="text-center">
                           <a href="#myModal" data-toggle="modal" data-load-code="<?= $feed['id_cu']; ?>" data-remote-target="#myModal .modal-body"><i class="fa fa-eye"></i></a>&nbsp;&nbsp;
                           <a data-load-id="<?= $feed['id_cu']; ?>" data-load-nama="<?= $feed['nama_visit']; ?>"><i class="fa fa-close"></i></a>
                         </td>

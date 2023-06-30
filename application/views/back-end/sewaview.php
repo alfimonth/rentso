@@ -49,7 +49,7 @@ if ($kode != null) {
 			<tr>
 				<td width="20%"><b>Mobil</b></td>
 				<td width="2%"><b>:</b></td>
-				<td width="78%"><?= $result['nama_merek']; ?>, <?= $result['nama_mobil']; ?></td>
+				<td width="78%"><?= $result['nama_merek'] . ' '; ?><?= $result['nama_mobil']; ?></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>

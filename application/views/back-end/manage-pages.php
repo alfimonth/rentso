@@ -59,7 +59,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 }
 //-->
 	</script>
-	<script type="text/javascript" src="nicEdit.js"></script>
+	<script type="text/javascript" src="<?= base_url('assets/admin/'); ?>js/nicEdit2.js"></script>
 	<script type="text/javascript">
 		bkLib.onDomLoaded(function() {
 			nicEditors.allTextAreas()
@@ -110,13 +110,14 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 											<div class="form-group">
 												<label class="col-sm-4 control-label">Pilih Halaman</label>
 												<div class="col-sm-4">
-													<select name="menu1" class="form-control" onChange="MM_jumpMenu('parent',this,0)">
+													<select name="menu1" class="form-control" id="pilih">
+														<!-- <select name="menu1" class="form-control" id="pilih" onChange="MM_jumpMenu('parent',this,0)"> -->
 														<option value="" selected="selected" class="form-control">***Pilih Halaman***</option>
-														<option value="manage-pages.php?type=terms">Terms and Conditions</option>
-														<option value="manage-pages.php?type=privacy">Privacy and Policy</option>
-														<option value="manage-pages.php?type=aboutus">About Us</option>
-														<option value="manage-pages.php?type=faqs">FAQs</option>
-														<option value="manage-pages.php?type=rekening">Rekening</option>
+														<option value="terms">Terms and Conditions</option>
+														<option value="privacy">Privacy and Policy</option>
+														<option value="aboutus">About Us</option>
+														<option value="faqs">FAQs</option>
+														<option value="rekening">Rekening</option>
 													</select>
 												</div>
 											</div>
@@ -155,7 +156,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 												<div class="col-sm-8">
 													<textarea class="form-control" rows="5" cols="50" name="pgedetails" id="pgedetails" placeholder="Package Details" required>
 											<?php
-											$pagetype = $_GET['type'];
+											$pagetype = $_POST['type'];
 											$sql = "SELECT detail from tblpages where type='$pagetype'";
 											$query = mysqli_query($koneksidb, $sql);
 											while ($result = mysqli_fetch_array($query)) {
@@ -187,6 +188,25 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 	<!-- Loading Scripts -->
 	<?php include('includes/script.php') ?>
+	<script>
+		$(document).ready(function() {
+			$('#pilih').change(function() {
+				var selectedValue = $(this).val();
+				if (selectedValue) {
+					$.ajax({
+						url: '<?= base_url('admin/pagedetail/'); ?>' + selectedValue,
+						type: 'GET',
+						success: function(response) {
+							$('#pgedetails').val(response);
+						},
+						error: function(xhr, status, error) {
+							console.log(error);
+						}
+					});
+				}
+			});
+		});
+	</script>
 
 </body>
 

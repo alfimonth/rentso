@@ -42,13 +42,62 @@ class Admin extends CI_Controller
     $this->session->set_flashdata('hapus', "<script>Swal.fire({icon: 'success',title: 'Hapus feedback berhasil', showConfirmButton: false,timer: 1500})</script>");
     redirect('admin/menghubungi');
   }
-  public function page()
+  public function rekening()
   {
-    $this->load->view('back-end/manage-pages');
+    $this->form_validation->set_rules(
+      'pgedetails',
+      'pgedetails',
+      'required|trim',
+      [
+        'required' => 'pgedetails tidak Boleh Kosong',
+      ]
+    );
+    if ($this->form_validation->run() == false) {
+      $this->load->view('back-end/rekening');
+    } else {
+      $pgedetails = $this->input->post('pgedetails', true);
+      $this->ModelPages->updatePage($pgedetails, 'rekening');
+      $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'success',position: 'left-end',title: 'Update rekening berhasil', showConfirmButton: false,timer: 1000})</script>");
+      redirect(base_url('admin/rekening'));
+    }
   }
-  public function pagedetail()
+  public function faq()
   {
-    $this->load->view('back-end/manage-pages');
+    $this->form_validation->set_rules(
+      'pgedetails',
+      'pgedetails',
+      'required|trim',
+      [
+        'required' => 'pgedetails tidak Boleh Kosong',
+      ]
+    );
+    if ($this->form_validation->run() == false) {
+      $this->load->view('back-end/faq');
+    } else {
+      $pgedetails = $this->input->post('pgedetails', true);
+      $this->ModelPages->updatePage($pgedetails, 'faqs');
+      $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'success',position: 'left-end',title: 'Update FAQs berhasil', showConfirmButton: false,timer: 1000})</script>");
+      redirect(base_url('admin/faq'));
+    }
+  }
+  public function about()
+  {
+    $this->form_validation->set_rules(
+      'pgedetails',
+      'pgedetails',
+      'required|trim',
+      [
+        'required' => 'pgedetails tidak Boleh Kosong',
+      ]
+    );
+    if ($this->form_validation->run() == false) {
+      $this->load->view('back-end/about');
+    } else {
+      $pgedetails = $this->input->post('pgedetails', true);
+      $this->ModelPages->updatePage($pgedetails, 'aboutus');
+      $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'success',position: 'left-end',title: 'Update about-us berhasil', showConfirmButton: false,timer: 1000})</script>");
+      redirect(base_url('admin/about'));
+    }
   }
   public function kontak()
   {

@@ -2,13 +2,6 @@
 error_reporting(0);
 include('includes/config.php');
 
-if ($_POST['submit'] == "Update") {
-	$pagetype = $_GET['type'];
-	$pagedetails = $_POST['pgedetails'];
-	$sql = "UPDATE tblpages SET detail='$pagedetails' WHERE type='$pagetype'";
-	$query = mysqli_query($koneksidb, $sql);
-	$msg = "Page data updated  successfully";
-}
 
 ?>
 
@@ -82,7 +75,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 			border-left: 4px solid #5cb85c;
 			-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
 			box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+
 		}
+
+		.swal2-popup {
+			height: 200px;
+		}
+
 	</style>
 
 
@@ -98,65 +97,29 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				<div class="row">
 					<div class="col-md-12">
 
-						<h2 class="page-title">Kelola Halaman</h2>
+						<h2 class="page-title">Kelola Bagian</h2>
 
 						<div class="row">
 							<div class="col-md-10">
 								<div class="panel panel-default">
-									<div class="panel-heading">Form Kelola Halaman</div>
+									<div class="panel-heading">Form Kelola Bagian</div>
 									<div class="panel-body">
 										<form method="post" name="chngpwd" class="form-horizontal" onSubmit="return valid();">
 											<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
-											<div class="form-group">
-												<label class="col-sm-4 control-label">Pilih Halaman</label>
-												<div class="col-sm-4">
-													<select name="menu1" class="form-control" id="pilih">
-														<!-- <select name="menu1" class="form-control" id="pilih" onChange="MM_jumpMenu('parent',this,0)"> -->
-														<option value="" selected="selected" class="form-control">***Pilih Halaman***</option>
-														<option value="terms">Terms and Conditions</option>
-														<option value="privacy">Privacy and Policy</option>
-														<option value="aboutus">About Us</option>
-														<option value="faqs">FAQs</option>
-														<option value="rekening">Rekening</option>
-													</select>
-												</div>
-											</div>
-											<div class="hr-dashed"></div>
 
 											<div class="form-group">
-												<label class="col-sm-4 control-label">Halaman Terpilih</label>
+												<label class="col-sm-4 control-label">Bagian</label>
 												<div class="col-sm-4">
-													<?php
-													switch ($_GET['type']) {
-														case "terms":
-															echo "<input type='text' class='form-control' value='Terms and Conditions' readonly>";
-															break;
-														case "privacy":
-															echo "<input type='text' class='form-control' value='Privacy And Policy' readonly>";
-															break;
-														case "aboutus":
-															echo "<input type='text' class='form-control' value='About US' readonly>";
-															break;
-														case "faqs":
-															echo "<input type='text' class='form-control' value='FAQs' readonly>";
-															break;
-														case "rekening":
-															echo "<input type='text' class='form-control' value='Rekening' readonly>";
-															break;
-														default:
-															echo "<input type='text' class='form-control' value='' readonly>";
-															break;
-													}
-													?>
+													<input type='text' class='form-control' value='FAQs' readonly>
 												</div>
 											</div>
 
 											<div class="form-group">
-												<label class="col-sm-4 control-label">Detail Halaman</label>
+												<label class="col-sm-4 control-label">Isi</label>
 												<div class="col-sm-8">
 													<textarea class="form-control" rows="5" cols="50" name="pgedetails" id="pgedetails" placeholder="Package Details" required>
 											<?php
-											$pagetype = $_POST['type'];
+											$pagetype = 'FAQs';
 											$sql = "SELECT detail from tblpages where type='$pagetype'";
 											$query = mysqli_query($koneksidb, $sql);
 											while ($result = mysqli_fetch_array($query)) {
@@ -188,32 +151,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 	<!-- Loading Scripts -->
 	<?php include('includes/script.php') ?>
-	<script>
-		$(document).ready(function() {
-			// Mendengarkan perubahan pada elemen seleksi
-			$('#pilih').change(function() {
-				alert('a');
-				var selectedValue = $(this).val(); // Mengambil nilai yang dipilih
-
-				// Mengirim permintaan Ajax ke server
-				$.ajax({
-					url: '<?= base_url('admin/pagedetail/') ?>', // Ubah sesuai dengan URL yang benar untuk skrip PHP Anda
-					type: 'POST',
-					data: {
-						selectedValue: selectedValue
-					}, // Mengirim nilai yang dipilih ke skrip PHP
-					success: function(response) {
-						// Menampilkan data yang diterima dari server ke elemen HTML yang sesuai
-						$('#pgedetails').html(response);
-					},
-					error: function(xhr, status, error) {
-						// Menangani kesalahan jika ada
-						console.log(xhr.responseText);
-					}
-				});
-			});
-		});
-	</script>
+	<?= $this->session->flashdata('pesan'); ?>
 
 </body>
 

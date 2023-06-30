@@ -135,7 +135,7 @@ include('includes/config.php');
 													<div class="stat-panel-title text-uppercase">Total Unit</div>
 												</div>
 											</div>
-											<a href="<?= base_url('sewa/bayar'); ?>" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="<?= base_url('mobil'); ?>" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 

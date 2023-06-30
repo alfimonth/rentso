@@ -11,5 +11,8 @@ class ModelPages extends CI_Model
         $this->db->from('contactusinfo');
         return $this->db->get();
     }
-
+    public function updatePage($detail, $type)
+    {
+        return $this->db->query("UPDATE tblpages SET detail='$detail' WHERE type='$type'");
+    }
 }

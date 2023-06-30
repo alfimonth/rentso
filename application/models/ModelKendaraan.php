@@ -50,6 +50,7 @@ class ModelKendaraan extends CI_Model
     }
     public function deleteMobil($id)
     {
+        $this->db->query("DELETE FROM unit WHERE id_kendaraan='$id'");
         return $this->db->query("DELETE FROM kendaraan WHERE id_mobil='$id'");
     }
     public function editMerek($brand, $id)

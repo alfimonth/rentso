@@ -19,7 +19,14 @@
 			<li><a href="<?= base_url('mobil/driver'); ?>"><i class="fa fa-money"></i> Biaya Driver</a></li>
 			<li><a href="<?= base_url('admin/user'); ?>"><i class="fa fa-users"></i> User</a></li>
 			<li><a href="<?= base_url('admin/menghubungi'); ?>"><i class="fa fa-phone"></i> Feedback</a></li>
-			<li><a href="<?= base_url('admin/page'); ?>"><i class="fa fa-gear"></i> Kelola Halaman</a></li>
+			<!-- <li><a href="<?= base_url('admin/page'); ?>"><i class="fa fa-gear"></i> Kelola Halaman</a></li> -->
+			<li><a href="#"><i class="fa fa-gear"></i> Kelola Bagian</a>
+				<ul class="ts-sidebar-menu">
+					<li><a href="<?= base_url('admin/rekening'); ?>">Rekening</a></li>
+					<li><a href="<?= base_url('admin/about'); ?>">About</a></li>
+					<li><a href="<?= base_url('admin/faq'); ?>">FAQs</a></li>
+				</ul>
+			</li>
 			<li><a href="<?= base_url('admin/kontak'); ?>"><i class="fa fa-info"></i> Kontak Info</a></li>
 			<li><a href="<?= base_url('admin/laporan'); ?>"><i class="fa fa-files-o"></i> Laporan</a></li>
 		</ul>

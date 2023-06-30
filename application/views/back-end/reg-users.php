@@ -136,7 +136,6 @@ include('includes/config.php')
 			if (code) {
 				$($this.data('remote-target')).load('<?= base_url('sewa/userview/'); ?>' + code);
 				app.code = code;
-
 			}
 		});
 

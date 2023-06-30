@@ -40,4 +40,16 @@ class ModelKendaraan extends CI_Model
         $this->db->where($where);
         return $this->db->get('unit')->num_rows();
     }
+    public function addMerek($brand)
+    {
+        return $this->db->query("INSERT INTO merek (nama_merek) VALUES ('$brand')");
+    }
+    public function deleteMerek($id)
+    {
+        return $this->db->query("DELETE FROM merek WHERE id_merek='$id'");
+    }
+    public function editMerek($brand, $id)
+    {
+        return $this->db->query("UPDATE merek SET nama_merek='$brand' WHERE id_merek='$id'");
+    }
 }

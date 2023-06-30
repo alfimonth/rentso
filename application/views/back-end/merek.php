@@ -35,6 +35,11 @@ include('includes/config.php');
 			-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
 			box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
 		}
+
+		.mb-1 {
+			margin-bottom: 16px;
+			font-size: 16px;
+		}
 	</style>
 
 </head>
@@ -53,10 +58,13 @@ include('includes/config.php');
 						<h2 class="page-title">Kelola Merek</h2>
 
 						<!-- Zero Configuration Table -->
+						<a href="<?= base_url('mobil/addmerek') ?>" class="btn-primary btn mb-1"><span class="fa fa-plus-circle"></span>&nbsp;&nbsp;Tambah Merek</a>
+						<!--  -->
+
 						<div class="panel panel-default">
 							<div class="panel-heading">Daftar Merek</div>
 							<div class="panel-body">
-								<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
+								<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?= htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?= htmlentities($msg); ?> </div><?php } ?>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr align="center">
@@ -64,7 +72,7 @@ include('includes/config.php');
 											<th>Nama Merek</th>
 											<th>Tgl. Dibuat</th>
 											<th>Tgl. Update</th>
-											<th><a href="tambahmerek.php"><span class="fa fa-plus-circle"></span>Tambah Merek</a></th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -77,12 +85,12 @@ include('includes/config.php');
 											$nomor++;
 										?>
 											<tr align="center">
-												<td><?php echo htmlentities($nomor); ?></td>
-												<td><?php echo htmlentities($result['nama_merek']); ?></td>
-												<td><?php echo htmlentities($result['CreationDate']); ?></td>
-												<td><?php echo htmlentities($result['UpdationDate']); ?></td>
-												<td><a href="merekedit.php?id=<?php echo $result['id_merek']; ?>"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
-													<a href="merekdel.php?id=<?php echo $result['id_merek']; ?>" onclick="return confirm('Apakah anda yakin akan menghapus <?php echo $result['nama_merek']; ?>?');"><i class="fa fa-close"></i></a>
+												<td><?= htmlentities($nomor); ?></td>
+												<td><?= htmlentities($result['nama_merek']); ?></td>
+												<td><?= htmlentities($result['CreationDate']); ?></td>
+												<td><?= htmlentities($result['UpdationDate']); ?></td>
+												<td><a href="<?= base_url('mobil/editmerek/') . $result['id_merek']; ?>"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
+													<a data-load-id="<?= $result['id_merek']; ?>" data-load-nama="<?= $result['nama_merek']; ?>"><i class="fa fa-close"></i></a>
 												</td>
 											</tr>
 										<?php } ?>
@@ -98,6 +106,24 @@ include('includes/config.php');
 
 	<!-- Loading Scripts -->
 	<?php include('includes/script.php') ?>
+	<script>
+		$('[data-load-id]').on("click", function() {
+			var $this = $(this);
+			var id = $this.data('load-id');
+			var nama = $this.data('load-nama');
+			Swal.fire({
+				icon: 'warning',
+				title: 'Hapus merek ' + nama + '?',
+				showCancelButton: true,
+			}).then((result) => {
+				if (result.value === true) {
+					document.location = '<?= base_url('/mobil/merekdel/'); ?>' + id;
+				}
+			})
+		})
+	</script>
+	<?= $this->session->flashdata('pesan'); ?>
+	<?= $this->session->flashdata('hapus'); ?>
 </body>
 
 </html>

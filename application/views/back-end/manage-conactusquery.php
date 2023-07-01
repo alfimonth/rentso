@@ -55,17 +55,17 @@ error_reporting(0);
             <!-- Zero Configuration Table -->
             <div class="panel panel-default">
               <div class="panel-heading">semua feedback</div>
-              <div class="panel-body">
+              <div class="panel-body" style="overflow-x: auto;">
                 <?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?= htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?= htmlentities($msg); ?> </div><?php } ?>
                 <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Telp</th>
-                      <th>Status</th>
+                      <th class="text-center">Name</th>
+                      <th class="text-center">Email</th>
+                      <th class="text-center">Telp</th>
+                      <th class="text-center">Status</th>
                       <!-- <th>Tgl. Posting</th> -->
-                      <th class="text-center">Action</th>
+                      <th class="text-center" style="width: 10px;">Action</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -179,7 +179,7 @@ include('includes/config.php');
 													<div class="stat-panel-title text-uppercase">User</div>
 												</div>
 											</div>
-											<a href="reg-users.php" class="block-anchor panel-footer text-center">Rincian <i class="fa fa-arrow-right"></i></a>
+											<a href="<?= base_url('admin/user'); ?>" class="block-anchor panel-footer text-center">Rincian <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 
@@ -193,10 +193,10 @@ include('includes/config.php');
 													$query = mysqli_num_rows($query5);
 													?>
 													<div class="stat-panel-number h1 "><?= htmlentities($query); ?></div>
-													<div class="stat-panel-title text-uppercase">Menghubungi</div>
+													<div class="stat-panel-title text-uppercase">Feedback</div>
 												</div>
 											</div>
-											<a href="manage-conactusquery.php" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
+											<a href="<?= base_url('admin/menghubungi'); ?>" class="block-anchor panel-footer text-center">Rincian &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
 									</div>
 

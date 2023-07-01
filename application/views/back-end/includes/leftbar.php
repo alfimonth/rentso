@@ -1,6 +1,6 @@
 	<nav class="ts-sidebar">
 		<ul class="ts-sidebar-menu">
-			<li class="ts-label">Main</li>
+			<li class="ts-label"></li>
 			<li><a href="<?= base_url('admin/'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 			<li><a href="#"><i class="fa fa-exchange"></i> Sewa</a>
 				<ul class="ts-sidebar-menu">
@@ -29,5 +29,6 @@
 			</li>
 			<li><a href="<?= base_url('admin/kontak'); ?>"><i class="fa fa-info"></i> Kontak Info</a></li>
 			<li><a href="<?= base_url('admin/laporan'); ?>"><i class="fa fa-files-o"></i> Laporan</a></li>
+			<li><a href="<?= base_url(''); ?>" target="_blank"><i class="fa fa-globe"></i>Website</a></li>
 		</ul>
 	</nav>

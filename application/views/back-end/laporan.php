@@ -17,7 +17,7 @@ include('includes/library.php');
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 
-	<title>Rental Mobil | Admin Laporan</title>
+	<title>Laporan | Rentso.</title>
 
 	<?php include('includes/style.php') ?>
 	<style>

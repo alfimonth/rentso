@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 
-	<title>Rental Mobil | Admin Update Info</title>
+	<title>Kelola - Driver | Rentso.</title>
 
 	<?php include('includes/style.php') ?>
 

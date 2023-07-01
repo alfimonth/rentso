@@ -21,7 +21,7 @@ $querysewa = mysqli_query($koneksidb, $sqlsewa);
 	<meta name="description" content="rental mobil">
 	<meta name="author" content="universitas pamulang">
 
-	<title>Cetak Detail Laporan</title>
+	<title>Cetak - Laporan | Rentso.</title>
 
 	<link href="../assets/images/cat-profile.png" rel="icon" type="images/x-icon">
 

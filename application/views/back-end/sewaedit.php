@@ -18,7 +18,7 @@ include('includes/library.php');
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 
-	<title>Mutiara Motor Car Rental Portal | Admin Edit Sewa Mobil</title>
+	<title>Ubah - Sewa | Rentso.</title>
 
 	<?php include('includes/style.php') ?>
 </head>

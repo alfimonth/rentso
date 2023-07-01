@@ -14,7 +14,7 @@ include('includes/config.php');
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 
-	<title>Rental Mobil | Admin Dashboard</title>
+	<title>Dashboard | Rentso.</title>
 	<?php include('includes/style.php'); ?>
 </head>
 

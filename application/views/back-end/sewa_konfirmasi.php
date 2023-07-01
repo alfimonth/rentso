@@ -16,7 +16,7 @@ include('includes/library.php');
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 
-	<title>Rental Mobil | Admin Kelola Sewa </title>
+	<title>Konfirmasi Pembayaran | Rentso.</title>
 
 	<?php include('includes/style.php'); ?>
 	<style>
@@ -57,20 +57,20 @@ include('includes/library.php');
 						<!-- Zero Configuration Table -->
 						<div class="panel panel-default">
 							<div class="panel-heading">Daftar Sewa Menunggu Konfirmasi</div>
-							<div class="panel-body">
+							<div class="panel-body" style="overflow-x: auto;">
 								<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?= htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?= htmlentities($msg); ?> </div><?php } ?>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr align="center">
-											<th>No</th>
-											<th>Kode Sewa</th>
-											<th>Mobil</th>
-											<th>Tgl. Mulai</th>
-											<th>Tgl. Selesai</th>
-											<th>Total</th>
-											<th>Penyewa</th>
-											<th>Status</th>
-											<th>Aksi</th>
+											<th class="text-center" style="width: 10px;">No</th>
+											<th class="text-center">Kode Sewa</th>
+											<th class="text-center">Mobil</th>
+											<th class="text-center">Tgl. Mulai</th>
+											<th class="text-center">Tgl. Selesai</th>
+											<th class="text-center">Total</th>
+											<th class="text-center">Penyewa</th>
+											<th class="text-center">Status</th>
+											<th class="text-center" style="width: 10px;">Aksi</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -88,11 +88,11 @@ include('includes/library.php');
 											<tr align="center">
 												<td><?= $i; ?></td>
 												<td><?= htmlentities($result['kode_booking']); ?></td>
-												<td><?= htmlentities($result['nama_merek'] . ' ' . $result['nama_mobil']); ?></td>
+												<td class="text-left"><?= htmlentities($result['nama_merek'] . ' ' . $result['nama_mobil']); ?></td>
 												<td><?= IndonesiaTgl(htmlentities($result['tgl_mulai'])); ?></td>
 												<td><?= IndonesiaTgl(htmlentities($result['tgl_selesai'])); ?></td>
 												<td><?= format_rupiah(htmlentities($total)); ?></td>
-												<td><a href="#myModal" data-toggle="modal" data-load-id="<?= $result['id_user']; ?>" data-remote-target="#myModal .modal-body"><?= $result['nama_user']; ?></a></td>
+												<td class="text-left"><a href="#myModal" data-toggle="modal" data-load-id="<?= $result['id_user']; ?>" data-remote-target="#myModal .modal-body"><?= $result['nama_user']; ?></a></td>
 												<td><?= htmlentities($result['status']); ?></td>
 												<td>
 													<a href="#myModal" data-toggle="modal" data-load-code="<?= $result['kode_booking']; ?>" data-remote-target="#myModal .modal-body"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;&nbsp;&nbsp;

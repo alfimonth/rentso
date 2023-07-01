@@ -16,7 +16,7 @@ header('location:index.php');
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	
-	<title>Mutiara Motor Car Rental Portal | Admin Edit Data User</title>
+	<title>Ubah - User| Rentso.</title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">

@@ -63,16 +63,16 @@ include('includes/config.php');
 
 						<div class="panel panel-default">
 							<div class="panel-heading">Daftar Merek</div>
-							<div class="panel-body">
+							<div class="panel-body" style="overflow-x: auto;">
 								<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?= htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?= htmlentities($msg); ?> </div><?php } ?>
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr align="center">
-											<th>No</th>
-											<th>Nama Merek</th>
-											<th>Tgl. Dibuat</th>
-											<th>Tgl. Update</th>
-											<th>Action</th>
+											<th class="text-center" style="width: 10px;">No</th>
+											<th class="text-center">Nama Merek</th>
+											<th class="text-center">Tgl. Dibuat</th>
+											<th class="text-center">Tgl. Update</th>
+											<th class="text-center" style="width: 10px;">Action</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -86,7 +86,7 @@ include('includes/config.php');
 										?>
 											<tr align="center">
 												<td><?= htmlentities($nomor); ?></td>
-												<td><?= htmlentities($result['nama_merek']); ?></td>
+												<td class="text-left"><?= htmlentities($result['nama_merek']); ?></td>
 												<td><?= htmlentities($result['CreationDate']); ?></td>
 												<td><?= htmlentities($result['UpdationDate']); ?></td>
 												<td><a href="<?= base_url('mobil/editmerek/') . $result['id_merek']; ?>"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;

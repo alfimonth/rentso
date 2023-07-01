@@ -98,6 +98,10 @@ class Kendaraan extends CI_Controller
             }
         }
     }
+    public function search()
+    {
+        $this->load->view('front-end/search');
+    }
     public function ready()
     {
         cek_login();

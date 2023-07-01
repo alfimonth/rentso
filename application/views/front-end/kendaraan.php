@@ -80,26 +80,14 @@ include('templates/format_rupiah.php');
               <h5><i class="fa fa-filter" aria-hidden="true"></i>Cari Mobil</h5>
             </div>
             <div class="sidebar_filter">
-              <form action="search-carresult.php" method="post">
-                <div class="form-group select">
-                  <select class="form-control" name="brand" required>
-                    <option value="" selected>Pilih Merek</option>
-                    <?php
-                    $sql3 = "SELECT * from  merek";
-                    $query3 = mysqli_query($koneksidb, $sql3);
-                    if (mysqli_num_rows($query3) > 0) {
-                      while ($result = mysqli_fetch_array($query3)) { ?>
-                        <option value="<?= htmlentities($result['id_merek']); ?>"><?= htmlentities($result['nama_merek']); ?></option>
-                    <?php }
-                    } ?>
-                  </select>
-                </div>
-                <div class="form-group select">
-                  <select class="form-control" name="fueltype" required>
-                    <option value="">Jenis Bahan Bakar</option>
-                    <option value="Bensin">Bensin</option>
-                    <option value="Diesel">Diesel</option>
-                  </select>
+              <form action="<?= base_url('kendaraan/search') ?>" method="post">
+                <div class="form-group">
+                  <input list="kendaraan" class="form-control" name="mobil" required>
+                  <datalist id="kendaraan">
+                    <?php foreach ($new as $vehicle) : ?>
+                      <option value="<?= htmlentities($vehicle['nama_merek']); ?> <?= htmlentities($vehicle['nama_mobil']); ?>"></option>
+                    <?php endforeach; ?>
+                  </datalist>
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i>Cari</button>

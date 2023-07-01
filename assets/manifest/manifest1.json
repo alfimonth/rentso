@@ -1,7 +1,7 @@
 {
   "name": "Rentso.",
   "short_name": "Rentso",
-  "theme_color": "#fa2837",
+  "theme_color": "#000",
   "background_color": "#fff",
   "display": "standalone",
   "orientation": "",

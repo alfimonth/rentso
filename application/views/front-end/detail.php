@@ -131,7 +131,7 @@ error_reporting(0);
 
                       <tr>
                         <td>AntiLock Braking System</td>
-                        <?php if ($vehicle['AntiLockBrakingSystem==1']) {
+                        <?php if ($vehicle['AntiLockBrakingSystem'] == 1) {
                         ?>
                           <td><i class="fa fa-check" aria-hidden="true"></i></td>
                         <?php } else { ?>
@@ -184,7 +184,7 @@ error_reporting(0);
 
                       <tr>
                         <td>Central Locking</td>
-                        <?php if ($vehicle['CentralLocking==1']) {
+                        <?php if ($vehicle['CentralLocking'] == 1) {
                         ?>
                           <td><i class="fa fa-check" aria-hidden="true"></i></td>
                         <?php } else { ?>
@@ -288,7 +288,7 @@ error_reporting(0);
 
       <!--Similar-Cars-->
       <div class="similar_cars">
-        <h3>Kendaraan Sejenis</h3>
+        <h3>Semua Mobil <?= htmlentities($vehicle['nama_merek']); ?></h3>
         <div class="row">
           <?php foreach ($sejenis as $vehicle) : ?>
 

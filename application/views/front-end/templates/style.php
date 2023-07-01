@@ -1,7 +1,7 @@
 <!--Bootstrap -->
 <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.mina.css" type="text/css">
 <!--Custome Style -->
-<link rel="stylesheet" href="<?= base_url('assets/'); ?>css/styles1.css" type="text/css">
+<link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style35.css" type="text/css">
 <!--OWL Carousel slider-->
 <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/owl.carousel.css" type="text/css">
 <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/owl.transitions.css" type="text/css">
@@ -30,7 +30,7 @@
 <link rel="shortcut icon" href="<?= base_url('assets/'); ?>images/icon/57.png">
 <!-- Google-Font-->
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-<link rel="manifest" href="<?= base_url('assets/manifest/manifest.json') ?>">
+<link rel="manifest" href="<?= base_url('assets/manifest/manifest1.json') ?>">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

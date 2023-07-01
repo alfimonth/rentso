@@ -20,7 +20,7 @@
             <div class="header_widgets">
               <div class="circle_icon"> <i class="fa fa-phone" aria-hidden="true"></i> </div>
               <p class="uppercase_text">For Services Call Us: </p>
-              <a href="tel:62-812-1482-1516">+62-812-1482-1516</a>
+              <a href="https://wa.me/6281214821516">+62-812-1482-1516</a>
             </div>
             <!-- <div class="social-follow">
               <ul>

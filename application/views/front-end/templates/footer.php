@@ -21,14 +21,29 @@ if (isset($_POST['emailsubscibe'])) {
   <div class="footer-top">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <h6>Tentang Kami</h6>
+        <div class="col-xs-6 col-md-4">
+          <h6>Navigasi</h6>
           <ul>
-            <li><a href="page.php?type=aboutus">Tentang Kami</a></li>
-            <li><a href="page.php?type=faqs">FAQs</a></li>
+            <li><a href="<?= base_url() ?>">Beranda</a></li>
+            <li><a href="<?= base_url('kendaraan') ?>">Kendaraan</a></li>
+            <li><a href="<?= base_url('page/faq') ?>">FAQs</a></li>
+            <li><a href="<?= base_url('contact') ?>">Feedback</a></li>
+            <li><a href="<?= base_url('page/about') ?>">About Us</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-6 col-md-4">
+          <h6>Lain-lain</h6>
+          <ul>
             <li><a href="page.php?type=privacy">Privacy</a></li>
             <li><a href="page.php?type=terms">Terms of use</a></li>
             <li><a href="admin/">Admin Login</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-6 col-md-4">
+          <h6>Tentang Kami</h6>
+          <p>Rentso. adalah website penyewaan kendaraan</p>
+          <ul>
+            <li></li>
           </ul>
         </div>
       </div>

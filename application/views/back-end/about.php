@@ -16,7 +16,7 @@ include('includes/config.php');
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 
-	<title>Rental Mobil | Admin Kelola Halaman</title>
+	<title>Kelola - About | Rentso.</title>
 
 	<!-- Font awesome -->
 	<?php include('includes/style.php') ?>

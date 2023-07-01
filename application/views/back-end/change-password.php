@@ -1,27 +1,7 @@
 <?php
-session_start();
 error_reporting(0);
 include('includes/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
-// Code for change password	
-if(isset($_POST['submit'])){
-$password=md5($_POST['password']);
-$newpassword=md5($_POST['newpassword']);
-$username=$_SESSION['alogin'];
-$sql ="SELECT Password FROM admin WHERE UserName='$username' and Password='$password'";
-$query= mysqli_query($koneksidb,$sql);
-	if(mysqli_num_rows($query) > 0){
-		$con="update admin set Password='$newpassword' where UserName='$username'";
-		$chngpwd = mysqli_query($koneksidb,$con);
-		$msg="Your Password succesfully changed";
-	}else {
-		$error="Your current password is not valid.";	
-	}
-}
+
 ?>
 
 <!doctype html>
@@ -34,24 +14,9 @@ $query= mysqli_query($koneksidb,$sql);
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	
-	<title>Rental Mobil | Admin Change Password</title>
+	<title>Ubah Password | Rentso.</title>
 
-	<!-- Font awesome -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<!-- Sandstone Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Bootstrap Datatables -->
-	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
-	<!-- Bootstrap social button library -->
-	<link rel="stylesheet" href="css/bootstrap-social.css">
-	<!-- Bootstrap select -->
-	<link rel="stylesheet" href="css/bootstrap-select.css">
-	<!-- Bootstrap file input -->
-	<link rel="stylesheet" href="css/fileinput.min.css">
-	<!-- Awesome Bootstrap checkbox -->
-	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<!-- Admin Stye -->
-	<link rel="stylesheet" href="css/style.css">
+	<?php include('includes/style.php') ?>
 <script type="text/javascript">
 function valid()
 {
@@ -104,8 +69,8 @@ function valid()
 									<div class="panel-heading">Form Ubah Password</div>
 									<div class="panel-body">
 										<form method="post" name="chngpwd" class="form-horizontal" onSubmit="return valid();">
-  	        	  <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+  	        	  <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?= htmlentities($error); ?> </div><?php } 
+				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?= htmlentities($msg); ?> </div><?php }?>
 											<div class="form-group">
 												<label class="col-sm-4 control-label">Current Password</label>
 												<div class="col-sm-8">
@@ -158,17 +123,8 @@ function valid()
 	</div>
 
 	<!-- Loading Scripts -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap-select.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.dataTables.min.js"></script>
-	<script src="js/dataTables.bootstrap.min.js"></script>
-	<script src="js/Chart.min.js"></script>
-	<script src="js/fileinput.js"></script>
-	<script src="js/chartData.js"></script>
-	<script src="js/main.js"></script>
+	<?php include('includes/script.php') ?>
 
 </body>
 
 </html>
-<?php } ?>

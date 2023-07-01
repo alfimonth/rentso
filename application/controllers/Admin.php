@@ -113,6 +113,43 @@ class Admin extends CI_Controller
     $data['selesai'] = $this->input->post('selesai', true);
     $this->load->view('back-end/laporan_cetak', $data);
   }
+  public function password()
+  {
+
+    $this->form_validation->set_rules('password', 'Password lama', 'required|trim', ['required' => 'Password lama tidak Boleh Kosong']);
+    // $this->form_validation->set_rules('new', 'Password', 'required|trim|min_length[3]|matches[confirmpassword]', ['matches' => 'Password Tidak Sama!!', 'min_length' => 'Password Terlalu Pendek']);
+    // $this->form_validation->set_rules('confirm', 'Repeat Password', 'required|trim|matches[newpassword]');
+
+    if ($this->form_validation->run() == false) {
+      $this->load->view('back-end/change-password');
+    } else {
+      $newpass = md5($this->input->post('newpassword', true));
+      $password = md5($this->input->post('password', true));
+      // cek old password
+      $myHost    = "localhost";
+      $myUser    = "root";
+      $myPass    = "";
+      $myDbs    = "rentso_db";
+
+      $koneksidb = mysqli_connect($myHost, $myUser, $myPass, $myDbs);
+      if (!$koneksidb) {
+        echo "Failed Connection !";
+      }
+      $sql = "SELECT * FROM admin WHERE UserName='admin' AND Password='$password'";
+      $query = mysqli_query($koneksidb, $sql);
+      $results = mysqli_fetch_array($query);
+
+      if (mysqli_num_rows($query) > 0) {
+        $con = "update admin set Password='$newpass' where UserName='admin'";
+        mysqli_query($koneksidb, $con);
+        $this->session->set_flashdata('login', "<script>Swal.fire({icon: 'success',title: 'Pasdword berhasil Berhasil', showConfirmButton: false,timer: 1500})</script>");
+        redirect(base_url('admin'));
+      } else {
+        $this->session->set_flashdata('pesan', "<script>Swal.fire({icon: 'error',title: 'Gagal merubah password', showConfirmButton: false,timer: 1500})</script>");
+        redirect(base_url('admin/password'));
+      }
+    }
+  }
   public function logout()
   {
     $item = array('username');

@@ -3,9 +3,12 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3 col-md-2">
-          <div class="logo"> <a href="index.php">
-              <h2 class="margin-none">Rentso.</h2>
-            </a> </div>
+          <div class="logo">
+            <a href="<?= base_url() ?> " style="display: flex; gap: 5px;">
+              <img src="<?= base_url('assets/'); ?>images/icon/57.png" alt="" style="display: inline-block; height: 40px;">
+              <h2 class="margin-none"> Rentso.</h2>
+            </a>
+          </div>
         </div>
         <div class="col-sm-9 col-md-10">
           <div class="header_info">

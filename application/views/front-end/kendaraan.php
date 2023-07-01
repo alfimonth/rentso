@@ -90,7 +90,7 @@ include('templates/format_rupiah.php');
                   </datalist>
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i>Cari</button>
+                  <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </div>
               </form>
             </div>
@@ -136,6 +136,7 @@ include('templates/format_rupiah.php');
   <?php include('templates/forgotpassword.php'); ?>
 
   <?php include('templates/script.php'); ?>
+  <?= $this->session->flashdata('search'); ?>
 
 </body>
 

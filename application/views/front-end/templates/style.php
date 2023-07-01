@@ -1,7 +1,7 @@
 <!--Bootstrap -->
 <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap.mina.css" type="text/css">
 <!--Custome Style -->
-<link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css" type="text/css">
+<link rel="stylesheet" href="<?= base_url('assets/'); ?>css/styles1.css" type="text/css">
 <!--OWL Carousel slider-->
 <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/owl.carousel.css" type="text/css">
 <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/owl.transitions.css" type="text/css">

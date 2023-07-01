@@ -100,7 +100,18 @@ class Kendaraan extends CI_Controller
     }
     public function search()
     {
-        $this->load->view('front-end/search');
+
+        $mobil = $this->input->post('mobil', true);
+        $datas = $this->ModelKendaraan->get()->result_array();
+
+        foreach ($datas as $data) {
+            if ($mobil === $data['nama_merek'] . ' ' . $data['nama_mobil']) {
+                redirect(base_url('kendaraan/detail/') . $data['id_mobil']);
+                return false;
+            }
+        }
+        $this->session->set_flashdata('search', "<script>Swal.fire({icon: 'error',title: 'Kendaraan tidak ditemukan', showConfirmButton: false,timer: 1500})</script>");
+        redirect(base_url('kendaraan'));
     }
     public function ready()
     {

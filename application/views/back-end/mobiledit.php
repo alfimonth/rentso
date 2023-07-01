@@ -73,13 +73,9 @@ include('includes/config.php');
 
                     ?>
 
-                    <form method="post" class="form-horizontal" name="theform" action="" onsubmit="return valid(this);" enctype="multipart/form-data">
+                    <form method="post" class="form-horizontal" name="theform" action="" enctype="multipart/form-data">
                       <div class="form-group">
-                        <label class="col-sm-2 control-label">Nama Mobil<span style="color:red">*</span></label>
-                        <div class="col-sm-4">
-                          <input type="hidden" name="id" class="form-control" value="<?= $id; ?>" required>
-                          <input type="text" name="vehicletitle" class="form-control" value="<?= htmlentities($result['nama_mobil']); ?>" required>
-                        </div>
+
                         <label class="col-sm-2 control-label">Merek<span style="color:red">*</span></label>
                         <div class="col-sm-4">
                           <select class="form-control" name="brandname" required="" data-parsley-error-message="Field ini harus diisi">
@@ -98,6 +94,11 @@ include('includes/config.php');
                             }
                             ?>
                           </select>
+                        </div>
+                        <label class="col-sm-2 control-label">Nama Mobil<span style="color:red">*</span></label>
+                        <div class="col-sm-4">
+                          <input type="hidden" name="id" class="form-control" value="<?= $id; ?>" required>
+                          <input type="text" name="vehicletitle" class="form-control" value="<?= htmlentities($result['nama_mobil']); ?>" required>
                         </div>
                       </div>
 
@@ -153,7 +154,7 @@ include('includes/config.php');
                         </div>
                         <div class="col-sm-4">
                           Gambar 2<img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($result['image2']); ?>" width="300" height="200" style="border:solid 1px #000">
-                          <a href="<?= base_url('mobil/ubahgambar3/') . htmlentities($result['id_mobil']) ?>">Ganti Gambar 2</a>
+                          <a href="<?= base_url('mobil/ubahgambar2/') . htmlentities($result['id_mobil']) ?>">Ganti Gambar 2</a>
                         </div>
                         <div class="col-sm-4">
                           Gambar 3<img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($result['image3']); ?>" width="300" height="200" style="border:solid 1px #000">
@@ -370,7 +371,7 @@ include('includes/config.php');
                       <div class="col-sm-3">
                         <div class="checkbox checkbox-inline">
                           <button class="btn btn-primary" type="submit" style="margin-top:4%">Save changes</button>
-                          <a href="<?= base_url('mobil') ?>" class="btn btn-danger">Cancel</a>
+                          <button href="<?= base_url('mobil') ?>" class="btn btn-danger" style="margin-top:4%">Cancel</button>
                         </div>
                       </div>
                     </div>

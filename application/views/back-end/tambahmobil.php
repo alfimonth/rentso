@@ -61,12 +61,9 @@ include('includes/config.php');
 								<div class="panel panel-default">
 									<div class="panel-heading">Form Tambah Mobil</div>
 									<div class="panel-body">
-										<form method="post" name="theform" action="" class="form-horizontal" onsubmit="return valid(this);" enctype="multipart/form-data">
+										<form method="post" name="theform" action="" class="form-horizontal" enctype="multipart/form-data">
 											<div class="form-group">
-												<label class="col-sm-2 control-label">Nama Mobil<span style="color:red">*</span></label>
-												<div class="col-sm-4">
-													<input type="text" name="vehicletitle" class="form-control" required>
-												</div>
+												
 												<label class="col-sm-2 control-label">Pilih Merek<span style="color:red">*</span></label>
 												<div class="col-sm-4">
 													<select class="form-control" name="brandname" required="" data-parsley-error-message="Field ini harus diisi">
@@ -84,6 +81,10 @@ include('includes/config.php');
 														}
 														?>
 													</select>
+												</div>
+												<label class="col-sm-2 control-label">Nama Mobil<span style="color:red">*</span></label>
+												<div class="col-sm-4">
+													<input type="text" name="vehicletitle" class="form-control" required>
 												</div>
 											</div>
 

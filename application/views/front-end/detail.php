@@ -61,7 +61,8 @@ error_reporting(0);
         </div>
         <div class="col-md-3">
           <div class="price_info">
-            <p><?= htmlentities(format_rupiah($vehicle['harga'])); ?> </p>/ Hari
+            <p><?= htmlentities(format_rupiah($vehicle['harga'])); ?> </p>
+            <div style="margin-top: 5px; font-size: 20px;">/ Hari</div>
 
           </div>
         </div>

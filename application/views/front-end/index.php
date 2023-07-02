@@ -15,6 +15,28 @@ include('templates/format_rupiah.php');
   <title>Home | Rentso.</title>
   <!--Bootstrap -->
   <?php include('templates/style.php'); ?>
+  <style>
+    .banner-section {
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s;
+    }
+
+    .banner-section.slide-left {
+      animation: slideLeft 1s forwards;
+    }
+
+    @keyframes slideLeft {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -35,7 +57,7 @@ include('templates/format_rupiah.php');
           <div class="col-md-5 col-md-push-7">
             <div class="banner_content">
               <h1>Cari Mobil untuk kenyamanan anda.</h1>
-              <p>Kami Punya beberapa pilihan untuk anda. </p>
+              <p>Kami Punya beberapa pilihan untuk anda.</p>
               <a href="<?= base_url('kendaraan'); ?>" class="btn">Selengkapnya <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
             </div>
           </div>
@@ -44,7 +66,6 @@ include('templates/format_rupiah.php');
     </div>
   </section>
   <!-- /Banners -->
-
 
   <!-- Resent Cat-->
   <section class="section-padding gray-bg">
@@ -110,7 +131,33 @@ include('templates/format_rupiah.php');
   <?= $this->session->flashdata('up-pass'); ?>
   <?= $this->session->flashdata('bookingfail'); ?>
 
+  <script>
+    // Daftar gambar latar belakang yang akan diganti
+    var backgroundImages = [
+      "url('<?= base_url() ?>assets/images/banner-image-3.jpg')",
+      "url('<?= base_url() ?>assets/images/bannerx.jpg')",
+    ];
 
+    var bannerSection = document.querySelector(".banner-section");
+    var imageIndex = 0;
+
+    function changeBackgroundImage() {
+      // Mengubah gambar latar belakang dengan transisi slide ke kiri
+      // bannerSection.classList.add("slide-left");
+
+      // Menunggu transisi selesai sebelum mengganti gambar latar belakang
+      setTimeout(function() {
+        bannerSection.style.backgroundImage = backgroundImages[imageIndex];
+        // bannerSection.classList.remove("slide-left");
+
+        // Mengatur index berikutnya
+        imageIndex = (imageIndex + 1) % backgroundImages.length;
+      }, 1000);
+    }
+
+    // Mengganti latar belakang gambar setiap 3 detik
+    setInterval(changeBackgroundImage, 5000);
+  </script>
 
 </body>
 

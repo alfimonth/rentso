@@ -57,7 +57,7 @@ include('templates/format_rupiah.php');
 
           <?php foreach ($vehicles as $vehicle) : ?>
             <div class="product-listing-m gray-bg">
-              <div class="product-listing-img"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($vehicle['image1']); ?>" class="img-responsive" alt="Image" /> </a>
+              <div class="product-listing-img"><a href="<?= base_url('kendaraan/detail'); ?>/<?= htmlentities($vehicle['id_mobil']); ?>"><img src="<?= base_url('assets/'); ?>images/vehicleimages/<?= htmlentities($vehicle['image1']); ?>" class="img-responsive" alt="Image" /></a>
               </div>
               <div class="product-listing-content">
                 <h5><a href="<?= base_url('kendaraan/detail'); ?>/<?= htmlentities($vehicle['id_mobil']); ?>"><?= htmlentities($vehicle['nama_merek']); ?> <?= htmlentities($vehicle['nama_mobil']); ?></a></h5>

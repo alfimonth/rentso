@@ -43,6 +43,9 @@ class Kendaraan extends CI_Controller
         $data['vehicle'] = $this->ModelKendaraan->getOne(['id_mobil' => $id])->row_array();
         $data['user'] = $this->session->userdata('nama');
         $data['id'] = $id;
+        $totalunit = $this->ModelKendaraan->countUnit(['id_kendaraan' => $id]);
+        $mobil = $this->ModelKendaraan->getOne(['id_mobil' => $id])->row_array();
+        $nama = $mobil['nama_merek'] . ' ' . $mobil['nama_mobil'];
 
         $tglnow   = date('Y-m-d');
         $tglmulai = strtotime($tglnow);
@@ -54,6 +57,13 @@ class Kendaraan extends CI_Controller
         $this->form_validation->set_rules('vid', 'Id', 'required|trim', ['required' => 'Id tidak Boleh Kosong']);
         $this->form_validation->set_rules('fromdate', 'fromdate', 'required|trim', ['required' => 'fromdate tidak Boleh Kosong']);
         if ($this->form_validation->run() == false) {
+
+            if ($totalunit < 1) {
+                $this->session->set_flashdata('notavailable', "<script>Swal.fire({icon: 'error',title: 'Mobil \\'$nama\\' masih dalam proses pengadaan',})</script>");
+                redirect(base_url('/kendaraan/detail/') . $id);
+            } else {
+                $this->load->view('front-end/booking', $data);
+            }
             $this->load->view('front-end/booking', $data);
         } else {
 
@@ -76,10 +86,17 @@ class Kendaraan extends CI_Controller
                         $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Driver tidak boleh melebihi unit',})</script>");
                         $this->load->view('front-end/booking', $data);
                     } else {
-                        $check = $this->ModelBooking->check($fromdate, $todate, $vid)->num_rows();
-                        if ($check > 0) {
-                            $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Mobil tidak tersedia di tanggal ini', text: 'Silahkan pilih tanggal lain'})</script>");
-                            $this->load->view('front-end/booking', $data);
+
+                        $check = $this->ModelBooking->check($fromdate, $todate, $vid);
+                        if ($totalunit - $check < $unit) {
+                            $sisa = $totalunit - $check;
+                            if ($sisa > 0) {
+                                $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Hanya tersisa $sisa unit \\'$nama\\' ditanggal tersebut'})</script>");
+                                $this->load->view('front-end/booking', $data);
+                            } else {
+                                $this->session->set_flashdata('booking', "<script>Swal.fire({icon: 'error',title: 'Mobil tidak tersedia di tanggal ini', text: 'Silahkan pilih tanggal lain'})</script>");
+                                $this->load->view('front-end/booking', $data);
+                            }
                         } else {
                             $databooking = [
                                 'vid' => $vid,

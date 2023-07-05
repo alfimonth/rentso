@@ -343,6 +343,7 @@ error_reporting(0);
   <?php include('templates/script.php'); ?>
 
   <!-- Scripts -->
+  <?= $this->session->flashdata('notavailable'); ?>
 
 </body>
 

@@ -3,7 +3,16 @@ class ModelBooking extends CI_Model
 {
     public function check($fromdate, $todate, $id)
     {
-        return $this->db->query("SELECT kode_booking FROM cek_booking WHERE tgl_booking between '$fromdate' AND '$todate' AND id_mobil='$id' AND status!='Cancel'");
+        $query = "SELECT tgl_booking, SUM(unit) AS total_unit
+              FROM cek_booking
+              WHERE tgl_booking BETWEEN '$fromdate' AND '$todate' AND id_mobil = '$id' AND status != 'Cancel'
+              GROUP BY tgl_booking
+              ORDER BY total_unit DESC
+              LIMIT 1";
+
+        $result =  intval($this->db->query($query)->row_array()["total_unit"]);
+
+        return $result;
     }
 
     public function last()

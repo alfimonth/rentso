@@ -36,7 +36,7 @@ if (isset($_POST['emailsubscibe'])) {
           <ul>
             <li><a href="page.php?type=privacy">Privacy</a></li>
             <li><a href="page.php?type=terms">Terms of use</a></li>
-            <li><a href="admin/">Admin Login</a></li>
+            <li><a href="<?= base_url('auth/login') ?>">Admin Login</a></li>
           </ul>
         </div>
         <div class="col-xs-6 col-md-4">

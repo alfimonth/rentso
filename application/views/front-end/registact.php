@@ -27,6 +27,7 @@ if ($conf != $pass) {
 		$sql1 = "INSERT INTO users(nama_user,email,telp,password,alamat,ktp,kk) VALUES('$fname','$email','$mobile','$password','$alamat','$newimg1','$newimg2')";
 		$lastInsertId = mysqli_query($koneksidb, $sql1);
 		if ($lastInsertId) {
+			$this->session->set_flashdata('login', "<script>Swal.fire({icon: 'success',title: 'Register berhasil, silhkan login', showConfirmButton: false,timer: 1500})</script>");
 			echo "<script>alert('Registrasi berhasil. Sekarang anda bisa login.');</script>";
 			redirect('');
 		} else {

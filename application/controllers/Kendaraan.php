@@ -64,7 +64,6 @@ class Kendaraan extends CI_Controller
             } else {
                 $this->load->view('front-end/booking', $data);
             }
-            $this->load->view('front-end/booking', $data);
         } else {
 
             $vid = $this->input->post('vid', true);

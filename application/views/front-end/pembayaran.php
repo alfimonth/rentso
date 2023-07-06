@@ -13,7 +13,7 @@ include('templates/library.php');
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
-	<title> | Rentso.</title>
+	<title>Bukti Pembayaran | Rentso.</title>
 	<?php include('templates/style.php'); ?>
 </head>
 
@@ -42,7 +42,7 @@ include('templates/library.php');
 	?>
 	<section class="user_profile inner_pages">
 		<center>
-			<h3>Detail Sewa</h3>
+			<h3>Bukti Pembayaran</h3>
 		</center>
 		<div class="container">
 			<div class="user_profile_info">

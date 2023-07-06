@@ -62,7 +62,7 @@
     <!--/Login-Form -->
 
     <!--Register-Form -->
-    <?php include('templates/registration.php'); ?>
+
 
     <!--/Register-Form -->
 

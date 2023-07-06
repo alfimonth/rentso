@@ -92,7 +92,7 @@ include('templates/library.php');
 							$queryrek = mysqli_query($koneksidb, $sqlrek);
 							$resultrek = mysqli_fetch_array($queryrek);
 						?>
-							<b>*Silahkan transfer total biaya sewa ke <?= $resultrek['detail']; ?> maksimal tanggal <?= IndonesiaTgl($tglhasil); ?>.
+							<b>*Silahkan transfer total biaya sewa ke <?= $resultrek['detail']; ?> maksimal tanggal <?= IndonesiaTgl($tglhasil); ?>. Upload bukti pembayaran <a href="<?= base_url('user/pembayaran/') . $result['kode_booking']; ?>">disini</a>
 							<?php
 						} else {
 						} ?>

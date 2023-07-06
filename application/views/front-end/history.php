@@ -52,13 +52,13 @@ include('templates/library.php');
 		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
-					<th>Kode Sewa</th>
+					<th class="text-center" style="width: 100px;">Kode Sewa</th>
 					<!-- <th>Nama Mobil</th>
 						<th>Tgl. Mulai</th>
 						<th>Tgl. Selesai</th>
 						<th>Total Biaya</th> -->
-					<th>Status</th>
-					<th>Opsi</th>
+					<th class="text-center">Status</th>
+					<th class="text-center">Opsi</th>
 				</tr>
 			</thead>
 			<?php
@@ -80,34 +80,38 @@ include('templates/library.php');
 					$nomor++;
 			?>
 					<tr>
-						<td><?= $result['kode_booking']; ?></td>
+						<td class="text-center"><?= $result['kode_booking']; ?></td>
 						<!-- <td><?= $result['nama_merek'] . ' ' . $result['nama_mobil']; ?></td>
 							<td><?= IndonesiaTgl($result['tgl_mulai']); ?></td>
 							<td><?= IndonesiaTgl($result['tgl_selesai']); ?></td>
 							<td><?= format_rupiah($totalsewa); ?></td> -->
 						<td><?= $result['status']; ?></td>
 						<td align="center">
-							<?php
-							if ($result['status'] == "Sudah Dibayar" || $result['status'] == "Selesai") {
-							?>
-								<a href="booking_detail.php?kode=<?= $result['kode_booking']; ?>" class="glyphicon glyphicon-eye-open"></a>
-							<?php
-							} else {
-							?>
-								<a href="<?= base_url('/user/pembayaran/') . $result['kode_booking']; ?>" class="fa fa-edit"></a>&nbsp;&nbsp;&nbsp;
-								<a href="<?= base_url('/user/booking/') . $result['kode_booking']; ?>" class="glyphicon glyphicon-eye-open"></a>
-							<?php } ?>
+							<?php if ($result['status'] == "Selesai") { ?>
+								<a href="" class="fa fa-check" style="color: green;"></a>
+								<?php } else {
+
+								if ($result['status'] == "Sudah Dibayar") { ?>
+									<a href="<?= base_url('/user/booking/') . $result['kode_booking']; ?>" class="glyphicon glyphicon-eye-open"></a>
+
+
+								<?php } else {
+								?>
+									<a href="<?= base_url('/user/booking/') . $result['kode_booking']; ?>" class="glyphicon glyphicon-eye-open"></a>&nbsp;&nbsp;&nbsp;
+									<a href="<?= base_url('/user/pembayaran/') . $result['kode_booking']; ?>" class="fa fa-upload"></a>
+								<?php } ?>
 						</td>
 					</tr>
-				<?php } ?>
+			<?php }
+						} ?>
 
-			<?php
+		<?php
 			} else {
-			?>
-				<tr>
-					<td colspan="11" align="center"><b>Belum ada riwayat sewa.</b></td>
-				</tr>
-			<?php } ?>
+		?>
+			<tr>
+				<td colspan="11" align="center"><b>Belum ada riwayat sewa.</b></td>
+			</tr>
+		<?php } ?>
 		</table>
 	</div>
 	<br>
